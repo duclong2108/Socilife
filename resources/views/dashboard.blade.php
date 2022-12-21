@@ -1,15 +1,18 @@
 @extends('layouts.index')
 @section('content')
 <div class="content-wrapper">
-    <div class="container-fluid">
+  <div class="container-fluid">
 
-        
 
-        <!--start overlay-->
-        <div class="overlay"></div>
-        <!--end overlay-->
+
+    <!--start overlay-->
+    <div class="overlay">
+
+
     </div>
-    <!-- End container-fluid-->
+    <!--end overlay-->
+  </div>
+  <!-- End container-fluid-->
 
 </div>
 @endsection

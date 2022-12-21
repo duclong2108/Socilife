@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('admin')->namespace('Admin')->group(function(){
-    Route::match(['get','post'], '/', 'AdminController@login');
-    Route::group(['middleware'=>'admin'], function(){
-        Route::get('/dashboard', 'AdminController@dashboard');
-        Route::get('/logout', 'AdminController@logout');
-        Route::match(['get', 'post'], '/account', 'AdminController@account');
-    });
+Route::prefix('admin')->namespace('Admin')->group(function () {
+  Route::match(['get', 'post'], '/', 'AdminController@login');
+  Route::group(['middleware' => 'admin'], function () {
+    Route::get('/dashboard', 'AdminController@dashboard');
+    Route::get('/logout', 'AdminController@logout');
+    Route::get('/courses', 'CourseController@index');
+
+    Route::match(['get', 'post'], '/account', 'AdminController@account');
+  });
 });
