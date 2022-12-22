@@ -33,7 +33,7 @@
 
 </head>
 
-<body class="bg-theme bg-theme1">
+<body class="bg-theme bg-theme11">
 
   <!-- Start wrapper-->
   <div id="wrapper">

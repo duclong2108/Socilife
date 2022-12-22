@@ -49,8 +49,9 @@
                   <tr>
                     <th><input type="checkbox" class="select-all"></th>
                     <th>#</th>
-                    <th>Tiêu đề</th>
+                    
                     <th>Ảnh</th>
+                    <th>Tiêu đề</th>
                     <th>Số lượng bán</th>
                     <th>Ngày tạo</th>
                     <th>Tình Trạng</th>
@@ -61,16 +62,17 @@
                   <tr>
                     <td><input type="checkbox" value="{{$course['id']}}"></td>
                     <td>{{ ++$key }}</td>
+                    <td> <img src="{{$course['image']}}" width="100px" height="100px"></td>
                     <td>
                       {{ $course['title'] }}
                     </td>
 
-                    <td> <img src="{{$course['image']}}" width="100px" height="100px"></td>
+                    
                     <td>{{ $course['sold'] }}</td>
                     <td>{{ date('d/m/Y', strtotime($course['created_at'])) }}</td>
                     <td style="font-size: 30px">
                       <center>
-                        <a href="{{ url('admin/edit/course/' . $course['id']) }}" style="color: antiquewhite"
+                        <a href="{{ url('admin/edit/course/' . $course['id']) }}" style="color:greenyellow"
                           title="Chỉnh sửa khóa học"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
                         <a href="{{ url('admin/delete/course/' . $course['id']) }}" style="color: red"
                           title="Xóa khóa học"><i class="fa fa-trash"></i></a>
