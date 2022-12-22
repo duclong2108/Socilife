@@ -68,7 +68,7 @@
                     </td>
 
                     
-                    <td>{{ $course['sold'] }}</td>
+                    <td>{{ $course['sold'] }} đã bán</td>
                     <td>{{ date('d/m/Y', strtotime($course['created_at'])) }}</td>
                     <td style="font-size: 30px">
                       <center>
