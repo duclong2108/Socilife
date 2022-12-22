@@ -46,7 +46,7 @@
                                     </a>
                                 </div>
                                 <div class="col-11">
-                                    <input id="thumbnail" class="form-control" type="text" name="video[]" multiple readonly required>
+                                    <input id="thumbnail" class="form-control" type="text" name="video[]" multiple readonly>
                                     <div id="holder"></div>
                                 </div>
                             </div>

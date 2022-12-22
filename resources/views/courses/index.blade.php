@@ -66,8 +66,8 @@
                     </td>
                     <td>{{ $course['title'] }}</td>
                     <td>{{ $course['sold'] }}</td>
-                    <td>{{ $course['created_at'] }}</td>
-                    <td style="font-size: 20px">
+                    <td>{{ date('d/m/Y', strtotime($course['created_at'])) }}</td>
+                    <td style="font-size: 30px">
                       <center>
                         <a href="{{ url('admin/edit/course/' . $course['id']) }}" style="color: green"
                           title="Điều Chỉnh Quảng Cáo"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;

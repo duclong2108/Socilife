@@ -19,6 +19,10 @@ class CourseController extends Controller
   {
     if ($request->isMethod('POST')) {
       $data = $request->all();
+      // dd($data);
+      if(isset($data['video'])){
+        $data['video'] = implode(",",$data['video']);
+      }
       $data['admin_id']=Auth::guard('admin')->user()->id;
       Course::create($data);
       return redirect('/admin/courses')->with('message_success', 'Course Created Successfully.');

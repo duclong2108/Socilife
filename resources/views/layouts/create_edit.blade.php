@@ -141,7 +141,6 @@
     <!--Multi Select Js-->
     <script src="assets/plugins/jquery-multi-select/jquery.multi-select.js"></script>
     <script src="assets/plugins/jquery-multi-select/jquery.quicksearch.js"></script>
-
     <script>
         $(document).ready(function() {
             
