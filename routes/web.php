@@ -22,12 +22,12 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::match(['get', 'post'], '/account', 'AdminController@account');
     //Course
     Route::get('/courses', 'CourseController@index');
-    Route::match(['get','post'],'/create/course', 'CourseController@create');
+    Route::match(['get', 'post'], '/create/course', 'CourseController@create');
 
     //News
     Route::get('/news', 'NewsController@index');
-    Route::get('create/news', 'NewsController@create');
-    Route::match(['get', 'post'], '/create/course', 'CourseController@create');
+
+    Route::match(['get', 'post'], '/create/news', 'NewsController@create');
     //File Manager
     Route::prefix('laravel-filemanager')->group(function () {
       \UniSharp\LaravelFilemanager\Lfm::routes();
