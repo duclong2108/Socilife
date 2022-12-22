@@ -291,6 +291,7 @@
             prefix: 'admin/laravel-filemanager'
         });
     </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 <!-- Mirrored from codervent.com/dashtremev3/form-advanced.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2020 09:41:30 GMT -->

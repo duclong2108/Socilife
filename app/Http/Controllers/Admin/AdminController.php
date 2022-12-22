@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Admin;
-
+use RealRashid\SweetAlert\Facades\Alert;
 class AdminController extends Controller
 {
   public function login(Request $request)
@@ -16,9 +16,11 @@ class AdminController extends Controller
     if ($request->isMethod('post')) {
       $data = $request->all();
       if (Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password']])) {
-        return redirect('/admin/dashboard')->with('success_message', 'Đăng nhập thành công');
+        ALert::success('Thành công', 'Đăng nhập thành công');
+        return redirect('/admin/dashboard');
       } else {
-        return redirect()->back()->with('error_message', 'Đăng nhập không thành công!');
+        ALert::warning('Lỗi', 'Email hoặc mật khẩu không đúng');
+        return redirect()->back();
       }
     }
     return View('login');
@@ -31,7 +33,8 @@ class AdminController extends Controller
   public function logout(Request $request)
   {
     Auth::guard('admin')->logout();
-    return redirect('/admin')->with('success_message', 'Đăng xuất thành công');
+    ALert::success('Thành công', 'Đăng xuất thành công');
+    return redirect('/admin');
   }
   public function account(Request $request)
   {
@@ -42,22 +45,18 @@ class AdminController extends Controller
         if ($data['password'] == $data['confirm_password']) {
           $data['password'] = Hash::make($data['password']);
           $admin->update($data);
-          return redirect()->back()->with('success_message', 'Cập nhật thành công!');
+          ALert::success('Thành công', 'Cập Nhật Thành Công');
+          return redirect()->back();
         } else {
-          return redirect()->back()->with('error_message', 'Mật khẩu không giống nhau!');
+          ALert::warning('Lỗi', 'Mật khẩu không giống nhau');
+          return redirect()->back();
         }
       }
-      if (empty($data['password']) && empty($data['confirm_password'])) {
+      else if (empty($data['password']) && empty($data['confirm_password'])) {
         $data['password'] = $admin['password'];
-        if ($request->hasFile('image')) {
-          $image = $request->file('image');
-          $reimage = time() . '.' . $image->getClientOriginalExtension();
-          $dest = public_path('/imgs');
-          $image->move($dest, $reimage);
-          $data['image'] = 'imgs/' . $reimage;
-        }
         $admin->update($data);
-        return redirect()->back()->with('success_message', 'Cập nhật thành công!');
+        ALert::success('Thành công', 'Cập Nhật Thành Công');
+        return redirect()->back();
       }
     }
 

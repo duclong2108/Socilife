@@ -26,7 +26,7 @@
 
 </head>
 
-<body class="bg-theme bg-theme1">
+<body class="bg-theme bg-theme11">
 
 
     <!-- Start wrapper-->
@@ -41,23 +41,7 @@
                             <img src="assets/images/logo-icon.png" alt="logo icon">
                         </div>
                         <div class="card-title text-uppercase text-center py-3">Đăng Nhập</div>
-                        @if(Session::has('error_message'))
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <i class="bi-check-circle-fill"></i>
-                            <strong>{{Session::get('error_message')}}</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        @elseif(Session::has('success_message'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <i class="bi-exclamation-triangle-fill"></i>
-                            <strong>{{Session::get('success_message')}}</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        @endif
+                        @include('sweetalert::alert')
                         <form action="{{url('/admin')}}" method="POST">
                             @csrf
                             <div class="form-group">
@@ -110,7 +94,7 @@
 
     <!-- Custom scripts -->
     <script src="assets/js/app-script.js"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 <!-- Mirrored from codervent.com/dashtremev3/authentication-signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2020 09:41:31 GMT -->

@@ -14,21 +14,7 @@
             </div>
 
         </div>
-        @if (Session::has('error_message'))
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>{{ Session::get('error_message') }}</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @elseif(Session::has('success_message'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{ Session::get('success_message') }}</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
+        @include('sweetalert::alert')
         <!-- End Breadcrumb-->
         <form action="{{ url('admin/edit/course', $course['id']) }}" method="POST" enctype="multipart/form-data">
             @csrf

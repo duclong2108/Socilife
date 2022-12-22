@@ -3,7 +3,7 @@
 <div class="content-wrapper">
   <div class="container-fluid">
 
-
+  @include('sweetalert::alert')
 
     <!--start overlay-->
     <div class="overlay">

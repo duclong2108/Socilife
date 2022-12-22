@@ -31,7 +31,7 @@
 
 </head>
 
-<body class="bg-theme bg-theme1">
+<body class="bg-theme bg-theme11">
 
   <!-- Start wrapper-->
   <div id="wrapper">
@@ -54,23 +54,7 @@
 
         <div class="row">
           <div class="col-lg-12">
-            @if(Session::has('error_message'))
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-              <i class="bi-check-circle-fill"></i>
-              <strong>{{Session::get('error_message')}}</strong>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            @elseif(Session::has('success_message'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              <i class="bi-exclamation-triangle-fill"></i>
-              <strong>{{Session::get('success_message')}}</strong>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            @endif
+          @include('sweetalert::alert')
             <div class="card">
               <div class="card-body">
                 <ul class="nav nav-tabs nav-tabs-primary top-icon nav-justified">
@@ -212,6 +196,7 @@
             prefix: 'admin/laravel-filemanager'
         });
     </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 <!-- Mirrored from codervent.com/dashtremev3/pages-user-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2020 09:42:04 GMT -->
