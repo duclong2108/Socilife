@@ -15,7 +15,8 @@
       </div>
       <div class="col-sm-3">
         <div class="btn-group float-sm-right">
-          <button type="submit" class="btn btn-facebook waves-effect waves-light"><i class="fa fa-minus mr-1"></i>Xóa
+          <button type="submit" class="btn btn-facebook waves-effect waves-light delete-all" record="news"><i
+              class="fa fa-minus mr-1"></i>Xóa
             Mục Chọn</button>
           <a role="button" href="{{ url('admin/create/news') }}" class="btn btn-light waves-effect waves-light"><i
               class="fa fa-plus mr-1"></i>
@@ -23,21 +24,7 @@
         </div>
       </div>
     </div>
-    @if (Session::has('error_message'))
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <strong>{{ Session::get('error_message') }}</strong>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    @elseif(Session::has('success_message'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>{{ Session::get('success_message') }}</strong>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    @endif
+    @include('sweetalert::alert')
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
@@ -59,7 +46,7 @@
                 <tbody>
                   @foreach ($news as $key => $news)
                   <tr>
-                    <td><input type="checkbox" value="{{$news['id']}}"></td>
+                    <td><input type="checkbox" class="sub_ck" data-id="{{$news['id']}}" value="{{$news['id']}}"></td>
                     <td>{{ ++$key }}</td>
                     <td>
                       {{ $news['title'] }}
@@ -68,12 +55,12 @@
                     <td> <img src="{{$news['image']}}" width="100px" height="100px"></td>
 
                     <td>{{ date('d/m/y',strtotime($news['created_at'])) }}</td>
-                    <td style="font-size: 20px">
+                    <td style="font-size: 30px">
                       <center>
-                        <a href="{{ url('admin/edit/course/' . $news['id']) }}" style="color: antiquewhite"
+                        <a href="{{ url('admin/edit/news/' . $news['id']) }}" style="color: greenyellow"
                           title="Chỉnh sửa tin tức"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
-                        <a href="{{ url('admin/delete/course/' . $news['id']) }}" style="color: red"
-                          title="Xóa tin tức"><i class="fa fa-trash"></i></a>
+                        <a href="javascript:void(0)" style="color: red" class="confirmdelete" record="news" recordid="{{$news['id']}}
+                          title=" Xóa tin tức"><i class="fa fa-trash"></i></a>
                       </center>
                     </td>
                   </tr>

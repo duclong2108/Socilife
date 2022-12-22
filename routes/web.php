@@ -29,8 +29,10 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
     //News
     Route::get('/news', 'NewsController@index');
-
     Route::match(['get', 'post'], '/create/news', 'NewsController@create');
+    Route::match(['get', 'post'], '/edit/news/{id}', 'NewsController@edit');
+    Route::get('/delete/news/{id}', 'NewsController@delete');
+    Route::get('/delete-all/news', 'NewsController@deleteAll');
     //File Manager
     Route::prefix('laravel-filemanager')->group(function () {
       \UniSharp\LaravelFilemanager\Lfm::routes();
