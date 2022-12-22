@@ -17,7 +17,7 @@
         <div class="btn-group float-sm-right">
           <button type="submit" class="btn btn-facebook waves-effect waves-light"><i class="fa fa-minus mr-1"></i>Xóa
             Mục Chọn</button>
-          <a role="button" href="{{ url('admin/create/course') }}" class="btn btn-light waves-effect waves-light"><i
+          <a role="button" href="{{ url('admin/create/news') }}" class="btn btn-light waves-effect waves-light"><i
               class="fa fa-plus mr-1"></i>
             Tạo</a>
         </div>
@@ -67,7 +67,7 @@
 
                     <td> <img src="{{$news['image']}}" width="100px" height="100px"></td>
 
-                    <td>{{ $news['created_at'] }}</td>
+                    <td>{{ date('d/m/y',strtotime($news['created_at'])) }}</td>
                     <td style="font-size: 20px">
                       <center>
                         <a href="{{ url('admin/edit/course/' . $news['id']) }}" style="color: antiquewhite"
