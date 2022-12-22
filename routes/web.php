@@ -23,6 +23,9 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     //Course
     Route::get('/courses', 'CourseController@index');
     Route::match(['get','post'],'/create/course', 'CourseController@create');
+    Route::match(['get','post'],'/edit/course/{id}', 'CourseController@edit');
+    Route::get('/delete/course/{id}', 'CourseController@delete');
+    Route::get('/delete-all/courses', 'CourseController@deleteAll');
 
     //News
     Route::get('/news', 'NewsController@index');

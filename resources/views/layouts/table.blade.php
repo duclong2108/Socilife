@@ -74,6 +74,7 @@
 
   <!-- Custom scripts -->
   <script src="assets/js/app-script.js"></script>
+  <script src="main.js"></script>
 
   <!--Data Tables js-->
   <script src="assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js"></script>
@@ -103,7 +104,7 @@
 
   });
   </script>
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 <!-- Mirrored from codervent.com/dashtremev3/table-data-tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2020 09:41:55 GMT -->
