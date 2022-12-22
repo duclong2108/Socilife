@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
-
+use Illuminate\Support\Facades\Auth;
 class CourseController extends Controller
 {
 
@@ -19,6 +19,9 @@ class CourseController extends Controller
   {
     if ($request->isMethod('POST')) {
       $data = $request->all();
+      $data['admin_id']=Auth::guard('admin')->user()->id;
+      Course::create($data);
+      return redirect('/admin/courses')->with('message_success', 'Course Created Successfully.');
     }
     return view('courses.create');
   }

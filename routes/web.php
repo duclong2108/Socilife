@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
-  Route::match(['get', 'post'], '/', 'AdminController@login');
+  Route::match(['get', 'post'], '/', 'AdminController@login')->name('login');
   Route::group(['middleware' => 'admin'], function () {
     //Admin
     Route::get('/dashboard', 'AdminController@dashboard');
@@ -27,5 +27,10 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     //News
     Route::get('/news', 'NewsController@index');
     Route::get('create/news', 'NewsController@create');
+    Route::match(['get', 'post'], '/create/course', 'CourseController@create');
+    //File Manager
+    Route::prefix('laravel-filemanager')->group(function () {
+      \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
   });
 });
