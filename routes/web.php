@@ -23,5 +23,9 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     //Course
     Route::get('/courses', 'CourseController@index');
     Route::get('/create/course', 'CourseController@create');
+
+    //News
+    Route::get('/news', 'NewsController@index');
+    Route::get('create/news', 'NewsController@create');
   });
 });

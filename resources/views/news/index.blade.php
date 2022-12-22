@@ -9,8 +9,8 @@
         <h4 class="page-title">Dữ Liệu Bảng</h4>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="javaScript:void();">Trang Chủ</a></li>
-          <li class="breadcrumb-item"><a href="javaScript:void();">Khóa học</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Quản lý khóa học</li>
+          <li class="breadcrumb-item"><a href="javaScript:void();">Tin tức</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Quản lý tin tức</li>
         </ol>
       </div>
       <div class="col-sm-3">
@@ -51,29 +51,29 @@
                     <th>#</th>
                     <th>Tiêu đề</th>
                     <th>Ảnh</th>
-                    <th>Số lượng bán</th>
+
                     <th>Ngày tạo</th>
                     <th>Tình Trạng</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($courses as $key => $course)
+                  @foreach ($news as $key => $news)
                   <tr>
-                    <td><input type="checkbox" value="{{$course['id']}}"></td>
+                    <td><input type="checkbox" value="{{$news['id']}}"></td>
                     <td>{{ ++$key }}</td>
                     <td>
-                      {{ $course['title'] }}
+                      {{ $news['title'] }}
                     </td>
 
-                    <td> <img src="{{$course['image']}}" width="100px" height="100px"></td>
-                    <td>{{ $course['sold'] }}</td>
-                    <td>{{ $course['created_at'] }}</td>
+                    <td> <img src="{{$news['image']}}" width="100px" height="100px"></td>
+
+                    <td>{{ $news['created_at'] }}</td>
                     <td style="font-size: 20px">
                       <center>
-                        <a href="{{ url('admin/edit/course/' . $course['id']) }}" style="color: antiquewhite"
-                          title="Chỉnh sửa khóa học"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
-                        <a href="{{ url('admin/delete/course/' . $course['id']) }}" style="color: red"
-                          title="Xóa khóa học"><i class="fa fa-trash"></i></a>
+                        <a href="{{ url('admin/edit/course/' . $news['id']) }}" style="color: antiquewhite"
+                          title="Chỉnh sửa tin tức"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
+                        <a href="{{ url('admin/delete/course/' . $news['id']) }}" style="color: red"
+                          title="Xóa tin tức"><i class="fa fa-trash"></i></a>
                       </center>
                     </td>
                   </tr>

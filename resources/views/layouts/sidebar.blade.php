@@ -28,21 +28,15 @@
     <li>
       <a class="has-arrow" href="javascript:void();">
         <div class="parent-icon"> <i class='zmdi zmdi-card-travel'></i></div>
-        <div class="menu-title">Components</div>
+        <div class="menu-title">Tin tức</div>
       </a>
       <ul>
-        <li><a href="components-range-slider.html"><i class="zmdi zmdi-dot-circle-alt"></i> Range Sliders</a></li>
-        <li><a href="components-image-carousel.html"><i class="zmdi zmdi-dot-circle-alt"></i> Image Carousels</a></li>
+        <li><a href="{{url('/admin/news')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Quản lý tin tức</a></li>
+        <li><a href="{{url('/admin/create/news')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Tạo tin tức</a></li>
         <li><a href="components-grid-layouts.html"><i class="zmdi zmdi-dot-circle-alt"></i> Grid Layouts</a></li>
         <li><a href="components-switcher-buttons.html"><i class="zmdi zmdi-dot-circle-alt"></i> Switcher Buttons</a>
         </li>
-        <li><a href="components-pricing-table.html"><i class="zmdi zmdi-dot-circle-alt"></i> Pricing Tables</a></li>
-        <li><a href="components-vertical-timeline.html"><i class="zmdi zmdi-dot-circle-alt"></i> Vertical Timeline</a>
-        </li>
-        <li><a href="components-horizontal-timeline.html"><i class="zmdi zmdi-dot-circle-alt"></i> Horizontal
-            Timeline</a></li>
-        <li><a href="components-fancy-lightbox.html"><i class="zmdi zmdi-dot-circle-alt"></i> Fancy Lightbox</a></li>
-        <li><a href="components-color-palette.html"><i class="zmdi zmdi-dot-circle-alt"></i> Color Palette</a></li>
+
       </ul>
     </li>
 
