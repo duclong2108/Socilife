@@ -57,7 +57,7 @@ class AdminController extends Controller
           $data['image'] = 'imgs/' . $reimage;
         }
         $admin->update($data);
-        return redirect()->back()->with('success_message', 'Quản trị cập nhật thành công');
+        return redirect()->back()->with('success_message', 'Cập nhật thành công!');
       }
     }
 
