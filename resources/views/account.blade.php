@@ -97,7 +97,17 @@
                       <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Ảnh</label>
                         <div class="col-lg-9">
-                          <input type="file" class="form-control" id="customFile" value="{{Auth::guard('admin')->user()->image}}" name="image" />
+                            <div class="row">
+                                <div class="col-1">
+                                    <a id="lfm2" data-input="thumbnail2" data-preview="holder2" class="btn btn-primary text-white">
+                                        <i class="fa fa-picture-o"></i> Choose
+                                    </a>
+                                </div>
+                                <div class="col-11">
+                                    <input id="thumbnail2" class="form-control" type="text" name="image" value="{{Auth::guard('admin')->user()->image}}" readonly required>
+                                    <div id="holder2"></div>
+                                </div>
+                            </div>
                         </div>
                       </div>
                       <div class="form-group row">
@@ -162,7 +172,46 @@
 
   <!-- Custom scripts -->
   <script src="assets/js/app-script.js"></script>
+  <script>
+        var lfm = function(id, type, options) {
+            let button = document.getElementById(id);
 
+            button.addEventListener('click', function() {
+                var route_prefix = (options && options.prefix) ? options.prefix : 'admin/laravel-filemanager';
+                var target_input = document.getElementById(button.getAttribute('data-input'));
+                var target_preview = document.getElementById(button.getAttribute('data-preview'));
+
+                window.open(route_prefix + '?type=' + options.type || 'file', 'FileManager', 'width=1200,height=600');
+                window.SetUrl = function(items) {
+                    var file_path = items.map(function(item) {
+                        return item.url;
+                    }).join(',');
+
+                    // set the value of the desired input to image url
+                    target_input.value = file_path;
+                    target_input.dispatchEvent(new Event('change'));
+
+                    // clear previous preview
+                    target_preview.innerHtml = '';
+
+                    // set or change the preview image src
+                    items.forEach(function(item) {
+                        let img = document.createElement('img')
+                        img.setAttribute('style', 'height: 5rem')
+                        img.setAttribute('src', item.thumb_url)
+                        target_preview.appendChild(img);
+                    });
+
+                    // trigger change event
+                    target_preview.dispatchEvent(new Event('change'));
+                };
+            });
+        };
+
+        lfm('lfm2', 'file', {
+            prefix: 'admin/laravel-filemanager'
+        });
+    </script>
 </body>
 
 <!-- Mirrored from codervent.com/dashtremev3/pages-user-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2020 09:42:04 GMT -->

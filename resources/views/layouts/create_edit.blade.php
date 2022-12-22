@@ -108,16 +108,12 @@
     <!-- Dropzone JS  -->
     <script src="assets/plugins/dropzone/js/dropzone.js"></script>
     <script src="assets/plugins/summernote/dist/summernote-bs4.min.js"></script>
-    <script>
+    <!-- <script>
         $('#summernoteEditor').summernote({
             height: 200,
             tabsize: 2
         });
-        $('#summernoteEditor1').summernote({
-            height: 200,
-            tabsize: 2
-        });
-    </script>
+    </script> -->
     <!--Select Plugins Js-->
     <script src="assets/plugins/select2/js/select2.min.js"></script>
     <!--Inputtags Js-->
@@ -148,6 +144,7 @@
 
     <script>
         $(document).ready(function() {
+            
             $('.single-select').select2();
 
             $('.multiple-select').select2();
@@ -203,12 +200,98 @@
                 selectableFooter: "<div class='custom-header'>Selectable footer</div>",
                 selectionFooter: "<div class='custom-header'>Selection footer</div>"
             });
-
+            
 
         });
-        CKEDITOR.replace( 'editor1' );
-    </script>
+        var options = {
+                filebrowserImageBrowseUrl: 'admin/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: 'admin/laravel-filemanager/upload?type=Images&_token=',
+                filebrowserBrowseUrl: 'admin/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: 'admin/laravel-filemanager/upload?type=Files&_token='
+            };
 
+        CKEDITOR.replace( 'editor', options );
+    </script>
+    <script>
+        var lfm = function(id, type, options) {
+            let button = document.getElementById(id);
+
+            button.addEventListener('click', function() {
+                var route_prefix = (options && options.prefix) ? options.prefix : 'admin/laravel-filemanager';
+                var target_input = document.getElementById(button.getAttribute('data-input'));
+                var target_preview = document.getElementById(button.getAttribute('data-preview'));
+
+                window.open(route_prefix + '?type=' + options.type || 'file', 'FileManager', 'width=1200,height=600');
+                window.SetUrl = function(items) {
+                    var file_path = items.map(function(item) {
+                        return item.url;
+                    }).join(',');
+
+                    // set the value of the desired input to image url
+                    target_input.value = file_path;
+                    target_input.dispatchEvent(new Event('change'));
+
+                    // clear previous preview
+                    target_preview.innerHtml = '';
+
+                    // set or change the preview image src
+                    items.forEach(function(item) {
+                        let img = document.createElement('img')
+                        img.setAttribute('style', 'height: 5rem')
+                        img.setAttribute('src', item.thumb_url)
+                        target_preview.appendChild(img);
+                    });
+
+                    // trigger change event
+                    target_preview.dispatchEvent(new Event('change'));
+                };
+            });
+        };
+
+        lfm('lfm2', 'file', {
+            prefix: 'admin/laravel-filemanager'
+        });
+    </script>
+    <script>
+        var lfm = function(id, type, options) {
+            let button = document.getElementById(id);
+
+            button.addEventListener('click', function() {
+                var route_prefix = (options && options.prefix) ? options.prefix : 'admin/laravel-filemanager';
+                var target_input = document.getElementById(button.getAttribute('data-input'));
+                var target_preview = document.getElementById(button.getAttribute('data-preview'));
+
+                window.open(route_prefix + '?type=' + options.type || 'file', 'FileManager', 'width=1200,height=600');
+                window.SetUrl = function(items) {
+                    var file_path = items.map(function(item) {
+                        return item.url;
+                    }).join(',');
+
+                    // set the value of the desired input to image url
+                    target_input.value = file_path;
+                    target_input.dispatchEvent(new Event('change'));
+
+                    // clear previous preview
+                    target_preview.innerHtml = '';
+
+                    // set or change the preview image src
+                    items.forEach(function(item) {
+                        let img = document.createElement('img')
+                        img.setAttribute('style', 'height: 5rem')
+                        img.setAttribute('src', item.thumb_url)
+                        target_preview.appendChild(img);
+                    });
+
+                    // trigger change event
+                    target_preview.dispatchEvent(new Event('change'));
+                };
+            });
+        };
+
+        lfm('lfm', 'file', {
+            prefix: 'admin/laravel-filemanager'
+        });
+    </script>
 </body>
 
 <!-- Mirrored from codervent.com/dashtremev3/form-advanced.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2020 09:41:30 GMT -->
