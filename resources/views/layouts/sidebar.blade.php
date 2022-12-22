@@ -8,23 +8,10 @@
 
   <ul class="metismenu" id="menu">
     <li>
-      <a class="has-arrow" href="javascript:void();">
+      <a href="{{url('/admin/dashboard')}}">
         <div class="parent-icon"><i class="zmdi zmdi-view-dashboard"></i></div>
         <div class="menu-title">Dashboard</div>
       </a>
-      <ul class="">
-        <li><a href="index.html"><i class="zmdi zmdi-dot-circle-alt"></i> eCommerce v1</a></li>
-        <li><a href="dashboard-eCommerce-v2.html"><i class="zmdi zmdi-dot-circle-alt"></i> eCommerce v2</a></li>
-        <li><a href="dashboard-human-resources.html"><i class="zmdi zmdi-dot-circle-alt"></i> Human Resources</a></li>
-        <li><a href="dashboard-digital-marketing.html"><i class="zmdi zmdi-dot-circle-alt"></i> Digital Marketing</a>
-        </li>
-        <li><a href="dashboard-property-listing.html"><i class="zmdi zmdi-dot-circle-alt"></i> Property Listings</a>
-        </li>
-        <li><a href="dashboard-service-support.html"><i class="zmdi zmdi-dot-circle-alt"></i> Services & Support</a>
-        </li>
-        <li><a href="dashboard-healthcare.html"><i class="zmdi zmdi-dot-circle-alt"></i> Healthcare</a></li>
-        <li><a href="dashboard-logistics.html"><i class="zmdi zmdi-dot-circle-alt"></i> Logistics</a></li>
-      </ul>
     </li>
 
     <li>
@@ -34,19 +21,7 @@
       </a>
       <ul>
         <li><a href="{{url('/admin/courses')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Quản lý khóa học</a></li>
-        <li><a href="ui-cards.html"><i class="zmdi zmdi-dot-circle-alt"></i> Cards</a></li>
-        <li><a href="ui-buttons.html"><i class="zmdi zmdi-dot-circle-alt"></i> Buttons</a></li>
-        <li><a href="ui-nav-tabs.html"><i class="zmdi zmdi-dot-circle-alt"></i> Nav Tabs</a></li>
-        <li><a href="ui-accordions.html"><i class="zmdi zmdi-dot-circle-alt"></i> Accordions</a></li>
-        <li><a href="ui-modals.html"><i class="zmdi zmdi-dot-circle-alt"></i> Modals</a></li>
-        <li><a href="ui-list-groups.html"><i class="zmdi zmdi-dot-circle-alt"></i> List Groups</a></li>
-        <li><a href="ui-bootstrap-elements.html"><i class="zmdi zmdi-dot-circle-alt"></i> BS Elements</a></li>
-        <li><a href="ui-pagination.html"><i class="zmdi zmdi-dot-circle-alt"></i> Pagination</a></li>
-        <li><a href="ui-alerts.html"><i class="zmdi zmdi-dot-circle-alt"></i> Alerts</a></li>
-        <li><a href="ui-progressbars.html"><i class="zmdi zmdi-dot-circle-alt"></i> Progress Bars</a></li>
-        <li><a href="ui-checkbox-radio.html"><i class="zmdi zmdi-dot-circle-alt"></i> Checkboxes & Radios</a></li>
-        <li><a href="ui-notification.html"><i class="zmdi zmdi-dot-circle-alt"></i> Notifications</a></li>
-        <li><a href="ui-sweet-alert.html"><i class="zmdi zmdi-dot-circle-alt"></i> Sweet Alerts</a></li>
+        <li><a href="{{url('/admin/create/course')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Tạo khóa học</a></li>
       </ul>
     </li>
 

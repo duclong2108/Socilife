@@ -17,7 +17,7 @@
         <div class="btn-group float-sm-right">
           <button type="submit" class="btn btn-facebook waves-effect waves-light"><i class="fa fa-minus mr-1"></i>Xóa
             Mục Chọn</button>
-          <a role="button" href="{{ url('/create/ads') }}" class="btn btn-light waves-effect waves-light"><i
+          <a role="button" href="{{ url('admin/create/course') }}" class="btn btn-light waves-effect waves-light"><i
               class="fa fa-plus mr-1"></i>
             Tạo</a>
         </div>
@@ -49,29 +49,29 @@
                   <tr>
                     <th><input type="checkbox" class="select-all"></th>
                     <th>#</th>
-                    <th>Tiêu đề</th>
                     <th>Ảnh</th>
+                    <th>Tiêu đề</th>
                     <th>Số lượng bán</th>
                     <th>Ngày tạo</th>
                     <th>Tình Trạng</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($courses as $key => $courses)
+                  @foreach ($courses as $key => $course)
                   <tr>
-                    <td><input type="checkbox" value="{{$courses['id']}}"></td>
+                    <td><input type="checkbox" value="{{$course['id']}}"></td>
                     <td>{{ ++$key }}</td>
                     <td>
-                      <img src="{{$courses['image']}}" width="100px" height="100px">
+                      <img src="{{$course['image']}}" width="100px" height="100px">
                     </td>
-                    <td>{{ $courses['title'] }}</td>
-
-
+                    <td>{{ $course['title'] }}</td>
+                    <td>{{ $course['sold'] }}</td>
+                    <td>{{ $course['created_at'] }}</td>
                     <td style="font-size: 20px">
                       <center>
-                        <a href="{{ url('/edit/ads/' . $courses['id']) }}" style="color: green"
+                        <a href="{{ url('admin/edit/course/' . $course['id']) }}" style="color: green"
                           title="Điều Chỉnh Quảng Cáo"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
-                        <a href="{{ url('/delete/ads/' . $courses['id']) }}" style="color: red" title="Xóa Quảng Cáo"><i
+                        <a href="{{ url('admin/delete/course/' . $course['id']) }}" style="color: red" title="Xóa Quảng Cáo"><i
                             class="fa fa-trash"></i></a>
                       </center>
                     </td>

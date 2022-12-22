@@ -28,7 +28,7 @@
           <li class="dropdown-item user-details">
             <a href="javaScript:void();">
               <div class="media">
-                <div class="avatar"><img class="align-self-start mr-3" src="assets/images/avatars/avatar-13.png"
+                <div class="avatar"><img class="align-self-start mr-3" src="{{Auth::guard('admin')->user()->image}}"
                     alt="user avatar"></div>
                 <div class="media-body">
                   <h6 class="mt-2 user-title">{{Auth::guard('admin')->user()->email}}</h6>

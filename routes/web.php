@@ -16,10 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->namespace('Admin')->group(function () {
   Route::match(['get', 'post'], '/', 'AdminController@login');
   Route::group(['middleware' => 'admin'], function () {
+    //Admin
     Route::get('/dashboard', 'AdminController@dashboard');
     Route::get('/logout', 'AdminController@logout');
-    Route::get('/courses', 'CourseController@index');
-
     Route::match(['get', 'post'], '/account', 'AdminController@account');
+    //Course
+    Route::get('/courses', 'CourseController@index');
+    Route::get('/create/course', 'CourseController@create');
   });
 });

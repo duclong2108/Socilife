@@ -41,13 +41,29 @@
                             <img src="assets/images/logo-icon.png" alt="logo icon">
                         </div>
                         <div class="card-title text-uppercase text-center py-3">Đăng Nhập</div>
+                        @if(Session::has('error_message'))
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <i class="bi-check-circle-fill"></i>
+                            <strong>{{Session::get('error_message')}}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @elseif(Session::has('success_message'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="bi-exclamation-triangle-fill"></i>
+                            <strong>{{Session::get('success_message')}}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
                         <form action="{{url('/admin')}}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputUsername" class="sr-only">Email</label>
                                 <div class="position-relative has-icon-right">
-                                    <input type="email" id="exampleInputUsername" class="form-control input-shadow"
-                                        placeholder="Nhập Email" required name="email">
+                                    <input type="email" id="exampleInputUsername" class="form-control input-shadow" placeholder="Nhập Email" required name="email">
                                     <div class="form-control-position">
                                         <i class="icon-envelope"></i>
                                     </div>
@@ -56,21 +72,20 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword" class="sr-only">Mật khẩu</label>
                                 <div class="position-relative has-icon-right">
-                                    <input type="password" id="exampleInputPassword" class="form-control input-shadow"
-                                        placeholder="Nhập Password" required name="password">
+                                    <input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Nhập Password" required name="password">
                                     <div class="form-control-position">
                                         <i class="icon-lock"></i>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <button type="submit" class="btn btn-light btn-block">Đăng nhập</button>
-                            
+
 
                         </form>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -79,7 +94,7 @@
         <!--End Back To Top Button-->
 
         <!--start color switcher-->
-        
+
         <!--end color switcher-->
 
     </div>
