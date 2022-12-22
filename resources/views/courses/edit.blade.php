@@ -15,7 +15,7 @@
 
         </div>
         <!-- End Breadcrumb-->
-        <form action="{{ url('admin/create/course') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('admin/edit/course', $course['id']) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-lg-12">
@@ -23,7 +23,7 @@
                         <div class="card-header text-uppercase">Các Dữ Liệu Khóa Học</div>
                         <div class="card-body">
                             <label>Tiêu Đề</label>
-                            <input type="text" name="title" required class="form-control">
+                            <input type="text" value="{{$course['title']}}" name="title" required class="form-control">
                             <hr>
                             <label>Ảnh</label>
                             <div class="row">
@@ -33,8 +33,10 @@
                                     </a>
                                 </div>
                                 <div class="col-11">
-                                    <input id="thumbnail2" class="form-control" type="text" name="image" readonly required>
-                                    <div id="holder2"></div>
+                                    <input id="thumbnail2" class="form-control" type="text" name="image" value="{{$course['image']}}" readonly>
+                                    <div id="holder2">
+                                        <input type="image" src="{{$course['image']}}" width="100px" height="100px">
+                                    </div>
                                 </div>
                             </div>
                             <hr>
@@ -47,13 +49,13 @@
                                 </div>
                                 <div class="col-11">
                                     <input id="thumbnail" class="form-control" type="text" name="video[]" multiple readonly>
-                                    <div id="holder"></div>
+                                    <div id="holder">
+                                    </div>
                                 </div>
                             </div>
                             <hr>
                             <label>Mô Tả</label>
-                            <textarea id="editor" name="description">
-                                    </textarea>
+                            <textarea id="editor" name="description" required>{{$course['description']}}</textarea>
                             <hr>
                             <button type="submit" class="btn btn-gradient-primary">Cập Nhật</button>
                         </div>

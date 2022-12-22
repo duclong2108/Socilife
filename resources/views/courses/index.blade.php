@@ -15,7 +15,7 @@
       </div>
       <div class="col-sm-3">
         <div class="btn-group float-sm-right">
-          <button type="submit" class="btn btn-facebook waves-effect waves-light"><i class="fa fa-minus mr-1"></i>Xóa
+          <button type="submit" class="btn btn-facebook waves-effect waves-light delete-all" record="courses"><i class="fa fa-minus mr-1"></i>Xóa
             Mục Chọn</button>
           <a role="button" href="{{ url('admin/create/course') }}" class="btn btn-light waves-effect waves-light"><i
               class="fa fa-plus mr-1"></i>
@@ -60,7 +60,7 @@
                 <tbody>
                   @foreach ($courses as $key => $course)
                   <tr>
-                    <td><input type="checkbox" value="{{$course['id']}}"></td>
+                    <td><input type="checkbox" value="{{$course['id']}}" class="sub_ck" data-id="{{$course['id']}}"></td>
                     <td>{{ ++$key }}</td>
                     <td> <img src="{{$course['image']}}" width="100px" height="100px"></td>
                     <td>
@@ -74,7 +74,7 @@
                       <center>
                         <a href="{{ url('admin/edit/course/' . $course['id']) }}" style="color:greenyellow"
                           title="Chỉnh sửa khóa học"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
-                        <a href="{{ url('admin/delete/course/' . $course['id']) }}" style="color: red"
+                        <a href="javascript:void(0)" style="color: red" class="confirmdelete" record="course" recordid="{{$course['id']}}"
                           title="Xóa khóa học"><i class="fa fa-trash"></i></a>
                       </center>
                     </td>

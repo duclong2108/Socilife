@@ -33,7 +33,7 @@
                                     </a>
                                 </div>
                                 <div class="col-11">
-                                    <input id="thumbnail2" class="form-control" type="text" name="image" readonly required>
+                                    <input id="thumbnail2" class="form-control" type="text" name="image" readonly>
                                     <div id="holder2"></div>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                             </div>
                             <hr>
                             <label>Mô Tả</label>
-                            <textarea id="editor" name="description">
+                            <textarea id="editor" name="description" required>
                                     </textarea>
                             <hr>
                             <button type="submit" class="btn btn-gradient-primary">Tạo</button>
