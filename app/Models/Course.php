@@ -14,7 +14,13 @@ class Course extends Model
     'description',
     'sold',
     'image',
-    'video',
-    'admin_id'
+    'audio',
+    'admin_id',
+    'discount',
+    'price',
+    'coin',
+    'price_reduce',
+    'coin_reduce',
+    'view'
   ];
 }

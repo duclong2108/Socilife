@@ -71,6 +71,17 @@ $(document).ready(function () {
             }
         });
     });
+    $('.discount').keyup(function(){
+        var discount = $(this).val();
+        var coin=$('.coin_original').val();
+        var price=$('.price_original').val();
+        if(discount>100||discount<0){
+            alert('Giảm giá quá lớn hoặc quá thấp mức cho phép')
+        }else{
+            $('.coin_reduce').val(parseInt(coin)*(100-parseFloat(discount))/100);
+            $('.price_reduce').val(parseInt(price)*(100-parseFloat(discount))/100);
+        }
+    })
     document.addEventListener("DOMContentLoaded", function() {
         var lazyloadImages = document.querySelectorAll("img.lazy");    
         var lazyloadThrottleTimeout;

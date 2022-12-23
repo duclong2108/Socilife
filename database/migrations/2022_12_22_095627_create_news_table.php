@@ -18,8 +18,6 @@ class CreateNewsTable extends Migration
       $table->text('title')->nullable();
       $table->text('description')->nullable();
       $table->text('image')->nullable();
-      $table->text('video')->nullable();
-      $table->text('admin_id')->nullable();
       $table->timestamps();
     });
   }

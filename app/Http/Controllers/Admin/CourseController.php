@@ -21,8 +21,8 @@ class CourseController extends Controller
     if ($request->isMethod('POST')) {
       $data = $request->all();
       // dd($data);
-      if(isset($data['video'])){
-        $data['video'] = implode(",",$data['video']);
+      if(isset($data['audio'])){
+        $data['audio'] = implode(",",$data['audio']);
       }
       $data['admin_id']=Auth::guard('admin')->user()->id;
       if(isset($data['image'])){
@@ -42,8 +42,8 @@ class CourseController extends Controller
     
     if($request->isMethod('POST')){
       $data=$request->all();
-      if(isset($data['video'])){
-        $data['video'] = implode(",",$data['video']);
+      if(isset($data['audio'])){
+        $data['audio'] = implode(",",$data['audio']);
       }
       if(isset($data['image'])){
         $course->update($data);
