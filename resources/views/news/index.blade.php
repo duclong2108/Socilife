@@ -28,7 +28,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
-          <div class="card-header"><i class="fa fa-table"></i> Dữ Liệu Bảng Quảng Cáo</div>
+          <div class="card-header"><i class="fa fa-table"></i> Dữ Liệu Bảng Tin Tức</div>
           <div class="card-body">
             <div class="table-responsive">
               <table id="example" class="table table-bordered">
@@ -54,7 +54,7 @@
 
                     <td> <img src="{{$news['image']}}" width="100px" height="100px"></td>
 
-                    <td>{{ date('d/m/y',strtotime($news['created_at'])) }}</td>
+                    <td>{{ date('d/m/Y',strtotime($news['created_at'])) }}</td>
                     <td style="font-size: 30px">
                       <center>
                         <a href="{{ url('admin/edit/news/' . $news['id']) }}" style="color: greenyellow"

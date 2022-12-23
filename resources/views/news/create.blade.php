@@ -28,19 +28,13 @@
               <input type="text" name="title" required class="form-control">
               <hr>
               <label>Ảnh</label>
-              <div class="row">
-                <div class="col-1">
-                  <a id="lfm2" data-input="thumbnail2" data-preview="holder2" class="btn btn-primary text-white">
-                    <i class="fa fa-picture-o"></i> Choose
-                  </a>
-                </div>
-                <div class="col-11">
-                  <input id="thumbnail2" class="form-control" type="text" name="image" readonly required>
-                  <div id="holder2"></div>
-                </div>
+              <div class="input-group">
+                <a id="lfm2" data-input="thumbnail2" data-preview="holder2" class="btn btn-primary text-white">
+                  <i class="fa fa-picture-o"></i> Choose Image
+                </a>
+                <input id="thumbnail2" class="form-control" type="text" name="image" readonly required>
               </div>
-
-
+              <div id="holder2"></div>
               <hr>
               <label>Mô Tả</label>
               <textarea id="editor" name="description">

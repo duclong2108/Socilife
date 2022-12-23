@@ -27,33 +27,14 @@
               <input type="text" value="{{$news['title']}}" name="title" required class="form-control">
               <hr>
               <label>Ảnh</label>
-              <div class="row">
-                <div class="col-1">
-                  <a id="lfm2" data-input="thumbnail2" data-preview="holder2" class="btn btn-primary text-white">
-                    <i class="fa fa-picture-o"></i> Choose
-                  </a>
-                </div>
-                <div class="col-11">
-                  <input id="thumbnail2" class="form-control" type="text" name="image" value="{{$news['image']}}"
-                    readonly>
-                  <div id="holder2">
-                    <input type="image" src="{{$news['image']}}" width="100px" height="100px">
-                  </div>
-                </div>
+              <div class="input-group">
+                <a id="lfm2" data-input="thumbnail2" data-preview="holder2" class="btn btn-primary text-white">
+                  <i class="fa fa-picture-o"></i> Choose Image
+                </a>
+                <input id="thumbnail2" class="form-control" value="{{$news['image']}}" type="text" name="image" readonly required>
               </div>
-              <hr>
-              <label>Video</label>
-              <div class="row">
-                <div class="col-1">
-                  <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
-                    <i class="fa fa-video-camera"></i> Choose
-                  </a>
-                </div>
-                <div class="col-11">
-                  <input id="thumbnail" class="form-control" type="text" name="video[]" multiple readonly>
-                  <div id="holder">
-                  </div>
-                </div>
+              <div id="holder2">
+                <input type="image" src="{{$news['image']}}" width="100px" height="100px">
               </div>
               <hr>
               <label>Mô Tả</label>
