@@ -33,6 +33,18 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::match(['get', 'post'], '/edit/news/{id}', 'NewsController@edit');
     Route::get('/delete/news/{id}', 'NewsController@delete');
     Route::get('/delete-all/news', 'NewsController@deleteAll');
+    //Books
+    Route::get('/books', 'BookController@index');
+    Route::match(['get', 'post'], '/create/book', 'BookController@create');
+    Route::match(['get', 'post'], '/edit/book/{id}', 'BookController@edit');
+    Route::get('/delete/book/{id}', 'BookController@delete');
+    Route::get('/delete-all/books', 'BookController@deleteAll');
+    //Chapters Book
+    Route::get('/chapters/book/{id}', 'ChapterBookController@index');
+    Route::post('/create/chapter/book/{id}', 'ChapterBookController@create');
+    Route::post('/edit/chapter/{id}', 'ChapterBookController@edit');
+    Route::get('/delete/chapter/{id}', 'ChapterBookController@delete');
+    Route::get('/delete-all/chapter-books', 'ChapterBookController@deleteAll');
     //File Manager
     Route::prefix('laravel-filemanager')->group(function () {
       \UniSharp\LaravelFilemanager\Lfm::routes();

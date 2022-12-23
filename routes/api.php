@@ -23,4 +23,7 @@ Route::namespace('Api')->group(function(){
     Route::post('/send-email', 'UserController@sendEmail');
     Route::post('/check-otp', 'UserController@checkOtp');
     Route::post('/reset-password', 'UserController@resetPassword');
+    Route::group(['middleware' => 'auth:api'], function() {
+        Route::get('/home', 'HomeController@index');
+    });
 });

@@ -46,7 +46,7 @@ class NewsController extends Controller
   public function delete(Request $request, $id)
   {
     News::find($id)->delete();
-    ALert::error('Thành công', 'Xóa Khóa Học Thành Công');
+    ALert::success('Thành công', 'Xóa Khóa Học Thành Công');
     return redirect()->back();
   }
   public function deleteAll(Request $request)

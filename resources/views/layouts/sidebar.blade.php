@@ -2,7 +2,7 @@
 
   <div class="brand-logo">
     <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
-    <h5 class="logo-text">Dashboard</h5>
+    <h5 class="logo-text">SocialLife</h5>
     <div class="close-btn"><i class="zmdi zmdi-close"></i></div>
   </div>
 
@@ -41,14 +41,11 @@
   <li>
     <a class="has-arrow" href="javascript:void();">
       <div class="parent-icon"> <i class='zmdi zmdi-chart'></i></div>
-      <div class="menu-title">Charts</div>
+      <div class="menu-title">Sách</div>
     </a>
     <ul>
-      <li><a href="charts-chartjs.html"><i class="zmdi zmdi-dot-circle-alt"></i> Chart JS</a></li>
-      <li><a href="charts-apex.html"><i class="zmdi zmdi-dot-circle-alt"></i> Apex Charts</a></li>
-      <li><a href="charts-sparkline.html"><i class="zmdi zmdi-dot-circle-alt"></i> Sparkline Charts</a></li>
-      <li><a href="charts-peity.html"><i class="zmdi zmdi-dot-circle-alt"></i> Peity Charts</a></li>
-      <li><a href="charts-other.html"><i class="zmdi zmdi-dot-circle-alt"></i> Other Charts</a></li>
+      <li><a href="{{url('/admin/books')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Quản lý sách</a></li>
+      <li><a href="{{url('/admin/create/book')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Tạo sách</a></li>
     </ul>
   </li>
 

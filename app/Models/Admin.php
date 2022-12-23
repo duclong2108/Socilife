@@ -17,4 +17,7 @@ class Admin extends Authenticatable
         'image',
         'password'
     ];
+    public function courses(){
+        return $this->hasMany('App\Models\Course', 'admin_id', 'id');
+    }
 }

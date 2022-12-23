@@ -105,6 +105,19 @@
   });
   </script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="//cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+  <script>
+    
+    var options = {
+                filebrowserImageBrowseUrl: 'admin/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: 'admin/laravel-filemanager/upload?type=Images&_token=',
+                filebrowserBrowseUrl: 'admin/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: 'admin/laravel-filemanager/upload?type=Files&_token='
+            };
+
+        CKEDITOR.replace( 'editor', options );
+        CKEDITOR.replace( 'editor1', options );
+  </script>
 </body>
 
 <!-- Mirrored from codervent.com/dashtremev3/table-data-tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2020 09:41:55 GMT -->
