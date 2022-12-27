@@ -2,16 +2,19 @@
 
   <div class="brand-logo">
     <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
-    <h5 class="logo-text">SocialLife</h5>
+    <h5 class="logo-text">Social Life</h5>
     <div class="close-btn"><i class="zmdi zmdi-close"></i></div>
   </div>
 
   <ul class="metismenu" id="menu">
     <li>
-      <a href="{{url('/admin/dashboard')}}">
+      <a href="javascript:void(0)" class="has-arrow">
         <div class="parent-icon"><i class="zmdi zmdi-view-dashboard"></i></div>
         <div class="menu-title">Dashboard</div>
       </a>
+      <ul>
+        <li><a href="{{url('/admin/banner')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Quản lý ảnh bìa</a></li>
+      </ul>
     </li>
 
     <li>
@@ -52,11 +55,10 @@
   <li>
     <a class="has-arrow" href="javascript:void();">
       <div class="parent-icon"> <i class='zmdi zmdi-widgets'></i></div>
-      <div class="menu-title">Widgets</div>
+      <div class="menu-title">Khảo sát</div>
     </a>
     <ul>
-      <li><a href="widgets-static.html"><i class="zmdi zmdi-dot-circle-alt"></i> Static Widgets</a></li>
-      <li><a href="widgets-data.html"><i class="zmdi zmdi-dot-circle-alt"></i> Data Widgets</a></li>
+      <li><a href="{{url('/admin/surveys')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Quản lý khảo sát</a></li>
     </ul>
   </li>
 

@@ -14,7 +14,7 @@ class Course extends Model
     'description',
     'sold',
     'image',
-    'audio',
+    'video',
     'admin_id',
     'discount',
     'price',

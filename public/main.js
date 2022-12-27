@@ -81,7 +81,29 @@ $(document).ready(function () {
             $('.coin_reduce').val(parseInt(coin)*(100-parseFloat(discount))/100);
             $('.price_reduce').val(parseInt(price)*(100-parseFloat(discount))/100);
         }
-    })
+    });
+    $('.create-question').click(function(){
+        $('#new-question').append(
+            `<div class="newcreate">
+                <div class="row">
+                    <div class="col-11">
+                        <label>Câu Trả Lời</label>
+                        <input type="text" required name="answer[]" class="form-control">
+                    </div>
+                    <div class="col-1">
+                        <a href="javascript:void(0)" style="position: relative;top:40%" class="minus-question"><i class="fa fa-3x fa-minus-circle"></i></a>
+                    </div>
+                </div>
+                <hr>
+            </div>`
+        );
+        $('.minus-question').click(function(){
+            $(this).closest('.newcreate').remove();
+        });
+    });
+    $('.minus-question').click(function(){
+        $(this).closest('.newcreate').remove();
+    });
     document.addEventListener("DOMContentLoaded", function() {
         var lazyloadImages = document.querySelectorAll("img.lazy");    
         var lazyloadThrottleTimeout;

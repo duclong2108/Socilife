@@ -35,12 +35,12 @@
                             </div>
                             <div id="holder2"></div>
                             <hr>
-                            <label>Audio</label>
+                            <label>Video</label>
                             <div class="input-group">
                                 <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
-                                    <i class="fa fa-file-audio-o"></i> Choose Audio
+                                    <i class="fa fa-file-video-o"></i> Choose Video
                                 </a>
-                                <input id="thumbnail" class="form-control" type="text" name="audio[]" multiple readonly>
+                                <input id="thumbnail" class="form-control" type="text" name="video[]" multiple readonly>
                             </div>
                             <div id="holder"></div>
                             <hr>

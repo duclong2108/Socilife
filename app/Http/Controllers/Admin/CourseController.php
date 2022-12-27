@@ -7,7 +7,9 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+
 class CourseController extends Controller
 {
 
@@ -21,50 +23,69 @@ class CourseController extends Controller
     if ($request->isMethod('POST')) {
       $data = $request->all();
       // dd($data);
-      if(isset($data['audio'])){
-        $data['audio'] = implode(",",$data['audio']);
-      }
-      $data['admin_id']=Auth::guard('admin')->user()->id;
-      if(isset($data['image'])){
-        Course::create($data);
-        ALert::success('Thành công', 'Tạo Thành Công Khóa Học');
-        return redirect('/admin/courses');
-      }else{
-        ALert::error('Lỗi', 'Thiếu Ảnh');
+      $validator = Validator::make($data, [
+        'image' => 'mimes:jpeg,jpg,png',
+        'video.*' => 'mimes:mp4,ogg,ogv,webm'
+      ]);
+      if ($validator->fails()) {
+        ALert::error('Lỗi', $validator->errors());
         return redirect()->back();
+      } else {
+        if (isset($data['video'])) {
+          $data['video'] = implode(",", $data['video']);
+        }
+        $data['admin_id'] = Auth::guard('admin')->user()->id;
+        if (isset($data['image'])) {
+          Course::create($data);
+          ALert::success('Thành công', 'Tạo Thành Công Khóa Học');
+          return redirect('/admin/courses');
+        } else {
+          ALert::error('Lỗi', 'Thiếu Ảnh');
+          return redirect()->back();
+        }
       }
-      
     }
     return view('courses.create');
   }
-  public function edit(Request $request, $id){
-    $course=Course::find($id);
-    
-    if($request->isMethod('POST')){
-      $data=$request->all();
-      if(isset($data['audio'])){
-        $data['audio'] = implode(",",$data['audio']);
-      }
-      if(isset($data['image'])){
-        $course->update($data);
-        ALert::success('Thành công', 'Chỉnh Sửa Thành Công Khóa Học');
-        return redirect('/admin/courses');
-      }else{
-        ALert::error('Lỗi', 'Thiếu Ảnh');
+  public function edit(Request $request, $id)
+  {
+    $course = Course::find($id);
+
+    if ($request->isMethod('POST')) {
+      $data = $request->all();
+      $validator = Validator::make($data, [
+        'image' => 'mimes:jpeg,jpg,png',
+        'video.*' => 'mimes:mp4,ogg,ogv,webm'
+      ]);
+      if ($validator->fails()) {
+        ALert::error('Lỗi', $validator->errors());
         return redirect()->back();
+      } else {
+        if (isset($data['video'])) {
+          $data['video'] = implode(",", $data['video']);
+        }
+        if (isset($data['image'])) {
+          $course->update($data);
+          ALert::success('Thành công', 'Chỉnh Sửa Thành Công Khóa Học');
+          return redirect('/admin/courses');
+        } else {
+          ALert::error('Lỗi', 'Thiếu Ảnh');
+          return redirect()->back();
+        }
       }
-      
     }
     return view('courses.edit', compact('course'));
   }
-  public function delete(Request $request, $id){
+  public function delete(Request $request, $id)
+  {
     Course::find($id)->delete();
     ALert::success('Thành công', 'Xóa Khóa Học Thành Công');
     return redirect()->back();
   }
-  public function deleteAll(Request $request){
-    $data=$request->all();
-    Course::whereIn('id', explode(",",$data['ids']))->delete();
+  public function deleteAll(Request $request)
+  {
+    $data = $request->all();
+    Course::whereIn('id', explode(",", $data['ids']))->delete();
     return response()->json(['status' => true]);
   }
 }

@@ -1,6 +1,9 @@
 @extends('layouts.table')
 @section('content')
+<?php
 
+use App\Models\Question;
+?>
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumb-->
@@ -9,13 +12,13 @@
                 <h4 class="page-title">Dữ Liệu Bảng</h4>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javaScript:void();">Trang Chủ</a></li>
-                    <li class="breadcrumb-item"><a href="javaScript:void();">Chương Sách</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Quản lý chương sách</li>
+                    <li class="breadcrumb-item"><a href="javaScript:void();">Khảo Sát</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Quản lý khảo sát</li>
                 </ol>
             </div>
             <div class="col-sm-3">
                 <div class="btn-group float-sm-right">
-                    <button type="submit" class="btn btn-facebook waves-effect waves-light delete-all" record="chapter-books"><i class="fa fa-minus mr-1"></i>Xóa
+                    <button type="submit" class="btn btn-facebook waves-effect waves-light delete-all" record="surveys"><i class="fa fa-minus mr-1"></i>Xóa
                         Mục Chọn</button>
                     <a role="button" class="btn btn-light waves-effect waves-light" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus mr-1"></i>
                         Tạo</a>
@@ -27,22 +30,18 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content" style="background-color:#007bff;">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Tạo chương sách</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Tạo khảo sát</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="{{url('/admin/create/chapter/book/'.$id)}}" method="POST">
+                    <form action="{{url('/admin/create/survey')}}" method="POST">
                         @csrf
                         <div class="modal-body">
 
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Tiêu đề:</label>
                                 <input type="text" name="title" class="form-control" id="recipient-name">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">Mô tả:</label>
-                                <textarea class="form-control" name="description" id="editor"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -57,7 +56,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header"><i class="fa fa-table"></i> Dữ Liệu Bảng Chương Sách</div>
+                    <div class="card-header"><i class="fa fa-table"></i> Dữ Liệu Bảng khảo sát</div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="example" class="table table-bordered">
@@ -66,32 +65,28 @@
                                         <th><input type="checkbox" class="select-all"></th>
                                         <th>#</th>
                                         <th>Tiêu đề</th>
-                                        <th>Mô tả</th>
+                                        <th>Số câu hỏi</th>
                                         <th>Tình Trạng</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($chapters as $key => $chapter)
-                                    <div class="modal fade" id="exampleModal{{$chapter['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    @foreach ($surveys as $key => $survey)
+                                    <div class="modal fade" id="exampleModal{{$survey['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content" style="background-color:#007bff;">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Cập Nhật chương sách</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Cập Nhật khảo sát</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <form action="{{url('/admin/edit/chapter/'.$chapter['id'])}}" method="POST">
+                                                <form action="{{url('/admin/edit/survey/'.$survey['id'])}}" method="POST">
                                                     @csrf
                                                     <div class="modal-body">
 
                                                         <div class="form-group">
                                                             <label for="recipient-name" class="col-form-label">Tiêu đề:</label>
-                                                            <input type="text" name="title" value="{{$chapter['title']}}" class="form-control" id="recipient-name">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="message-text" class="col-form-label">Mô tả:</label>
-                                                            <textarea class="form-control" name="description" id="editor1">{{$chapter['description']}}</textarea>
+                                                            <input type="text" name="title" value="{{$survey['title']}}" class="form-control" id="recipient-name">
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
@@ -103,18 +98,19 @@
                                         </div>
                                     </div>
                                     <tr>
-                                        <td><input type="checkbox" value="{{$chapter['id']}}" class="sub_ck" data-id="{{$chapter['id']}}"></td>
+                                        <td><input type="checkbox" value="{{$survey['id']}}" class="sub_ck" data-id="{{$survey['id']}}"></td>
                                         <td>{{ ++$key }}</td>
                                         <td>
-                                            {{ $chapter['title'] }}
+                                            {{ $survey['title'] }}
                                         </td>
                                         <td>
-                                            {!! $chapter['description'] !!}
+                                            {{count(Question::where('survey_id', $survey['id'])->get())}} câu hỏi
                                         </td>
                                         <td style="font-size: 30px">
                                             <center>
-                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModal{{$chapter['id']}}" style="color:greenyellow" title="Chỉnh sửa chương sách"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
-                                                <a href="javascript:void(0)" style="color: red" class="confirmdelete" record="chapter" recordid="{{$chapter['id']}}" title="Xóa chương sách"><i class="fa fa-trash"></i></a>
+                                                <a href="{{ url('admin/questions/survey/' . $survey['id']) }}" style="color:aqua" title="Xem các câu hỏi"><i class="fa fa-plus-circle"></i></a>&nbsp;&nbsp;&nbsp;
+                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModal{{$survey['id']}}" style="color:greenyellow" title="Chỉnh sửa khảo sát"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
+                                                <a href="javascript:void(0)" style="color: red" class="confirmdelete" record="survey" recordid="{{$survey['id']}}" title="Xóa khảo sát"><i class="fa fa-trash"></i></a>
                                             </center>
                                         </td>
                                     </tr>

@@ -45,6 +45,20 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::post('/edit/chapter/{id}', 'ChapterBookController@edit');
     Route::get('/delete/chapter/{id}', 'ChapterBookController@delete');
     Route::get('/delete-all/chapter-books', 'ChapterBookController@deleteAll');
+    //Banner
+    Route::match(['get','post'],'/banner', 'BannerController@index');
+    //Survey
+    Route::get('/surveys', 'SurveyController@index');
+    Route::post('/create/survey', 'SurveyController@create');
+    Route::post('/edit/survey/{id}', 'SurveyController@edit');
+    Route::get('/delete/survey/{id}', 'SurveyController@delete');
+    Route::get('/delete-all/surveys', 'SurveyController@deleteAll');
+    //Questions
+    Route::get('/questions/survey/{id}', 'QuestionController@index');
+    Route::match(['get', 'post'],'/create/question/survey/{id}', 'QuestionController@create');
+    Route::match(['get', 'post'],'/edit/question/{question_id}/survey/{id}', 'QuestionController@edit');
+    Route::get('/delete/question/{id}', 'QuestionController@delete');
+    Route::get('/delete-all/questions', 'QuestionController@deleteAll');
     //File Manager
     Route::prefix('laravel-filemanager')->group(function () {
       \UniSharp\LaravelFilemanager\Lfm::routes();

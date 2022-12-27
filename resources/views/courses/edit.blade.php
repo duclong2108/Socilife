@@ -37,20 +37,20 @@
                                 <input type="image" src="{{$course['image']}}" width="100px" height="100px">
                             </div>
                             <hr>
-                            <label>Audio</label>
+                            <label>Video</label>
                             <div class="input-group">
                                 <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
-                                    <i class="fa fa-file-audio-o"></i> Choose Audio
+                                    <i class="fa fa-file-video-o"></i> Choose Video
                                 </a>
-                                <input id="thumbnail" class="form-control" type="text" name="audio[]" multiple readonly>
+                                <input id="thumbnail" class="form-control" type="text" name="video[]" multiple readonly>
                             </div>
                             <div id="holder">
-                                @if(!empty($course['audio']))
-                                <audio controls>
-                                    @foreach(explode(",", $course['audio']) as $audio)
-                                        <source src="{{$audio}}" type="audio/mpeg">
+                                @if(!empty($course['video']))
+                                <video width="100" height="100" controls>
+                                    @foreach(explode(",", $course['video']) as $video)
+                                        <source src="{{$video}}" type="video/mp4">
                                     @endforeach
-                                </audio>
+                                </video>
                                 @endif
                             </div>
                             <hr>
