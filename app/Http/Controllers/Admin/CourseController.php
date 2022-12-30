@@ -9,32 +9,46 @@ use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
-
+use App\Models\Banner;
+use App\Models\Category;
 class CourseController extends Controller
 {
 
   public function index(Request $request)
   {
     $courses = Course::all();
-    return View('courses.index', compact('courses'));
+    $banner = Banner::first();
+    return View('courses.index', compact('courses', 'banner'));
   }
   public function create(Request $request)
   {
+    $categories=Category::all();
     if ($request->isMethod('POST')) {
       $data = $request->all();
       // dd($data);
       $validator = Validator::make($data, [
-        'image' => 'mimes:jpeg,jpg,png',
-        'video.*' => 'mimes:mp4,ogg,ogv,webm'
+        'image.*' => 'image|mimes:jpeg,jpg,png',
       ]);
       if ($validator->fails()) {
-        ALert::error('Lỗi', $validator->errors());
+        ALert::error('Lỗi', $validator->errors()->first());
         return redirect()->back();
       } else {
-        if (isset($data['video'])) {
+        if (count($data['video'])>0) {
+          // $validator1 = Validator::make($data, [
+          //   'video.*' => 'mimes:mp4,ogg,ogv,webm'
+          // ]);
+          // if ($validator1->fails()) {
+          //   ALert::error('Lỗi', $validator1->errors()->first());
+          //   return redirect()->back();
+          // }
           $data['video'] = implode(",", $data['video']);
         }
+        if(count(Category::where('id',$data['category_id'])->get())==0){
+          $category=Category::create(['name'=>ucfirst(strtolower($data['category_id']))]);
+          $data['category_id']=$category['id'];
+        }
         $data['admin_id'] = Auth::guard('admin')->user()->id;
+        $data['admin_name'] = Auth::guard('admin')->user()->name;
         if (isset($data['image'])) {
           Course::create($data);
           ALert::success('Thành công', 'Tạo Thành Công Khóa Học');
@@ -45,25 +59,38 @@ class CourseController extends Controller
         }
       }
     }
-    return view('courses.create');
+    return view('courses.create', compact('categories'));
   }
   public function edit(Request $request, $id)
   {
     $course = Course::find($id);
-
+    $categories=Category::all();
     if ($request->isMethod('POST')) {
       $data = $request->all();
+      // dd($data);
       $validator = Validator::make($data, [
-        'image' => 'mimes:jpeg,jpg,png',
-        'video.*' => 'mimes:mp4,ogg,ogv,webm'
+        'image.*' => 'image|mimes:jpeg,jpg,png',
       ]);
       if ($validator->fails()) {
-        ALert::error('Lỗi', $validator->errors());
+        ALert::error('Lỗi', $validator->errors()->first());
         return redirect()->back();
       } else {
-        if (isset($data['video'])) {
+        if (count($data['video'])>0) {
+          // $validator1 = Validator::make($data, [
+          //   'video.*' => 'mimes:mp4,ogg,ogv,webm'
+          // ]);
+          // if ($validator1->fails()) {
+          //   ALert::error('Lỗi', $validator1->errors()->first());
+          //   return redirect()->back();
+          // }
           $data['video'] = implode(",", $data['video']);
         }
+        if(count(Category::where('id',$data['category_id'])->get())==0){
+          $category=Category::create(['name'=>ucfirst(strtolower($data['category_id']))]);
+          $data['category_id']=$category['id'];
+        }
+        $data['admin_id'] = Auth::guard('admin')->user()->id;
+        $data['admin_name'] = Auth::guard('admin')->user()->name;
         if (isset($data['image'])) {
           $course->update($data);
           ALert::success('Thành công', 'Chỉnh Sửa Thành Công Khóa Học');
@@ -74,7 +101,8 @@ class CourseController extends Controller
         }
       }
     }
-    return view('courses.edit', compact('course'));
+    return view('courses.edit', compact('course', 'categories'));
+
   }
   public function delete(Request $request, $id)
   {

@@ -1,5 +1,8 @@
 @extends('layouts.create_edit')
 @section('content')
+<?php
+use Carbon\Carbon;
+?>
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumb-->
@@ -23,8 +26,20 @@
                     <div class="card">
                         <div class="card-header text-uppercase">Các Dữ Liệu Khóa Học</div>
                         <div class="card-body">
-                            <label>Tiêu Đề</label>
-                            <input type="text" name="title" required class="form-control">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Tiêu Đề</label>
+                                    <input type="text" name="title" required class="form-control">
+                                </div>
+                                <div class="col-6">
+                                    <label>Loại Khóa Học</label>
+                                    <select class="form-control type-course" name="type" required>
+                                        <option value="1" selected>Offline</option>
+                                        <option value="0">Online</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
                             <hr>
                             <label>Ảnh</label>
                             <div class="input-group">
@@ -42,7 +57,7 @@
                                 </a>
                                 <input id="thumbnail" class="form-control" type="text" name="video[]" multiple readonly>
                             </div>
-                            <div id="holder"></div>
+                            <!-- <div id="holder"></div> -->
                             <hr>
                             <label>Mô Tả</label>
                             <textarea id="editor" name="description" required>
@@ -70,9 +85,24 @@
                                 </div>
                             </div>
                             <hr>
-                            <label>Giảm giá (%)</label>
-                            <input type="text" class="form-control discount" name="discount">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Giảm giá (%)</label>
+                                    <input type="text" class="form-control discount" name="discount">
+                                </div>
+                                <div class="col-6">
+                                    <label>Danh Mục</label>
+                                    <select class="form-control single-select" name="category_id" required>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <hr>
+                            <div class="change-type-course">
+                            
+                            </div>
                             <button type="submit" class="btn btn-gradient-primary">Tạo</button>
                         </div>
                     </div>

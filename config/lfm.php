@@ -60,6 +60,8 @@ return [
                 'image/gif',
                 'application/pdf',
                 'text/plain',
+                'video/mp4',
+                'video/mpeg'
             ],
         ],
         'image' => [
@@ -173,6 +175,7 @@ return [
     | Please note that the 'upload_max_filesize' & 'post_max_size'
     | directives are not supported.
      */
+    "upload_max_filesize=M",
     'php_ini_overrides'        => [
         'memory_limit' => '256M',
     ],

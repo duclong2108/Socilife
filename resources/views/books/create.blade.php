@@ -23,8 +23,20 @@
                     <div class="card">
                         <div class="card-header text-uppercase">Các Dữ Liệu Sách</div>
                         <div class="card-body">
-                            <label>Tiêu Đề</label>
-                            <input type="text" name="title" required class="form-control">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Tiêu Đề</label>
+                                    <input type="text" name="title" required class="form-control">
+                                </div>
+                                <div class="col-6">
+                                    <label>Loại Sách</label>
+                                    <select class="form-control type-book" name="type" required>
+                                        <option value="1" selected>PDF</option>
+                                        <option value="0">Giấy</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
                             <hr>
                             <label>Ảnh</label>
                             <div class="input-group">
@@ -61,9 +73,27 @@
                                 </div>
                             </div>
                             <hr>
-                            <label>Giảm giá (%)</label>
-                            <input type="text" class="form-control discount" name="discount">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Giảm giá (%)</label>
+                                    <input type="text" class="form-control discount" name="discount">
+                                </div>
+                                <div class="col-6">
+                                    <label>Danh Mục</label>
+                                    <select class="form-control single-select" name="category_id" required>
+                                        @foreach($categories as $category)
+                                        <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                             <hr>
+                            <div class="change-type-book">
+
+                            </div>
+                            
+
                             <button type="submit" class="btn btn-gradient-primary">Tạo</button>
                         </div>
                     </div>

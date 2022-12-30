@@ -14,6 +14,7 @@ class Question extends Model
         'survey_id',
         'question',
         'image',
-        'answer'
+        'answer',
+        'type'
     ];
 }

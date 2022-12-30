@@ -5,7 +5,7 @@
         <!-- Breadcrumb-->
         <div class="row pt-2 pb-2">
             <div class="col-sm-9">
-                <h4 class="page-title">Tạo</h4>
+                <h4 class="page-title">Chỉnh Sửa</h4>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javaScript:void();">Trang Chủ</a></li>
                     <li class="breadcrumb-item"><a href="javaScript:void();">Cấu Hình</a></li>
@@ -23,8 +23,24 @@
                     <div class="card">
                         <div class="card-header text-uppercase">Các Dữ Liệu Câu Hỏi</div>
                         <div class="card-body">
-                            <label>Câu hỏi</label>
-                            <input type="text" name="question" value="{{$question['question']}}" required class="form-control">
+                        <div class="row">
+                                <div class="col-6">
+                                    <label>Câu hỏi</label>
+                                    <input type="text" name="question" required class="form-control" value="{{$question['question']}}">
+                                </div>
+                                <div class="col-6">
+                                    <label>Loại câu hỏi</label>
+                                    <select name="type" required class="form-control type-question">
+                                        @if($question['type']==0)
+                                        <option value="0" selected>Trắc nghiệm</option>
+                                        <option value="1" >Tự luận</option>
+                                        @else
+                                        <option value="0">Trắc nghiệm</option>
+                                        <option value="1" selected >Tự luận</option>
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
                             <hr>
                             <label>Ảnh</label>
                             <div class="input-group">
@@ -37,6 +53,9 @@
                                 <input type="image" src="{{$question['image']}}" width="100px" height="100px">
                             </div>
                             <hr>
+                            <div class="change-type-question">
+                            @if($question['type']==0)
+
                             @foreach(explode("|||", $question['answer']) as $key=>$answer)
                             @if($key==0)
                             <div class="row">
@@ -75,6 +94,8 @@
                             @endif
                             @endforeach
                             <div id="new-question">
+                            </div>
+                            @endif
                             </div>
                             <button type="submit" class="btn btn-gradient-primary">Chỉnh Sửa</button>
                         </div>

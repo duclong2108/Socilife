@@ -6,7 +6,7 @@
         <!-- Breadcrumb-->
         <div class="row pt-2 pb-2">
             <div class="col-sm-9">
-                <h4 class="page-title">Tạo</h4>
+                <h4 class="page-title">Chỉnh Sửa</h4>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javaScript:void();">Trang Chủ</a></li>
                     <li class="breadcrumb-item"><a href="javaScript:void();">Cấu Hình</a></li>
@@ -24,8 +24,25 @@
                     <div class="card">
                         <div class="card-header text-uppercase">Các Dữ Liệu Sách</div>
                         <div class="card-body">
-                            <label>Tiêu Đề</label>
-                            <input type="text" name="title" value="{{$book['title']}}" required class="form-control">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Tiêu Đề</label>
+                                    <input type="text" name="title" value="{{$book['title']}}" required class="form-control">
+                                </div>
+                                <div class="col-6">
+                                    <label>Loại Sách</label>
+                                    <select class="form-control type-book" name="type" required>
+                                        @if($book['type'] == 1)
+                                        <option value="1" selected>PDF</option>
+                                        <option value="0">Giấy</option>
+                                        @else
+                                        <option value="1">PDF</option>
+                                        <option value="0" selected>Giấy</option>
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+
                             <hr>
                             <label>Ảnh</label>
                             <div class="input-group">
@@ -64,9 +81,57 @@
                                 </div>
                             </div>
                             <hr>
-                            <label>Giảm giá (%)</label>
-                            <input type="text" class="form-control discount" value="{{$book['discount']}}" name="discount">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Giảm giá (%)</label>
+                                    <input type="text" class="form-control discount" value="{{$book['discount']}}" name="discount">
+                                </div>
+                                <div class="col-6">
+                                    <label>Danh Mục</label>
+                                    <select class="form-control single-select" name="category_id" required>
+                                        @foreach($categories as $category)
+                                        @if($book['category_id']==$category['id'])
+                                        <option value="{{ $category['id'] }}" selected>{{ $category['name'] }}</option>
+                                        @else
+                                        <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <hr>
+                            <div class="change-type-book">
+                                @if($book['type']==0)
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label>Kích thước</label>
+                                        <input type="text" class="form-control" name="size" value="{{$book['size']}}">
+                                    </div>
+                                    <div class="col-4">
+                                        <label>Loại bìa</label>
+                                        <input type="text" class="form-control" name="cover_type" value="{{$book['cover_type']}}">
+                                    </div>
+                                    <div class="col-4">
+                                        <label>Số trang</label>
+                                        <input type="number" min="1" class="form-control" value="{{$book['page']}}" name="page">
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label>Nhà xuất bản</label>
+                                        <input type="text" class="form-control" name="publish_company" value="{{$book['publish_company']}}">
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Năm xuất bản</label>
+                                        <input type="number" min="1000" max="9999" class="form-control" value="{{$book['publish_year']}}" name="publish_year">
+                                    </div>
+                                </div>
+
+                                <hr>
+                                @endif
+                            </div>
                             <button type="submit" class="btn btn-gradient-primary">Cập Nhật</button>
                         </div>
                     </div>

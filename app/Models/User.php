@@ -23,7 +23,14 @@ class User extends Authenticatable
         'password',
         'type',
         'token',
-        'otp'
+        'otp',
+        'gender',
+        'city',
+        'district',
+        'ward',
+        'address',
+        'price',
+        'coin'
     ];
 
     /**

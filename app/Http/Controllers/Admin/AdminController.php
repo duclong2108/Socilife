@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AboutUs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Admin;
+use App\Models\Policy;
 use RealRashid\SweetAlert\Facades\Alert;
 class AdminController extends Controller
 {
@@ -61,5 +63,23 @@ class AdminController extends Controller
     }
 
     return View('account', compact('admin'));
+  }
+  public function aboutUs(Request $request){
+    $aboutUs=AboutUs::first();
+    if($request->isMethod('post')){
+      $aboutUs->update($request->all());
+      ALert::success('Thành công', 'Cập Nhật Thành Công');
+      return redirect()->back();
+    }
+    return View('aboutus', compact('aboutUs'));
+  }
+  public function policy(Request $request){
+    $policy=Policy::first();
+    if($request->isMethod('post')){
+      $policy->update($request->all());
+      ALert::success('Thành công', 'Cập Nhật Thành Công');
+      return redirect()->back();
+    }
+    return View('policy', compact('policy'));
   }
 }

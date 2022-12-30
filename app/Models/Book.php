@@ -13,13 +13,22 @@ class Book extends Model
         'title',
         'description',
         'admin_id',
+        'admin_name',
         'sold',
         'image',
         'price',
         'coin',
         'price_reduce',
         'coin_reduce',
-        'discount'
+        'discount',
+        'category_id',
+        'category_name',
+        'size',
+        'page',
+        'cover_type',
+        'publish_year',
+        'publish_company',
+        'type'
     ];
     public function bookChapter(){
         return $this->hasMany('App\Models\BookChapter','book_id','id');

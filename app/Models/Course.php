@@ -16,11 +16,17 @@ class Course extends Model
     'image',
     'video',
     'admin_id',
+    'admin_name',
     'discount',
     'price',
     'coin',
     'price_reduce',
     'coin_reduce',
-    'view'
+    'view',
+    'type',
+    'category_id',
+    'opening_date',
+    'application',
+    'password',
   ];
 }

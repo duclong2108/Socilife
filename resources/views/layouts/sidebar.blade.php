@@ -1,10 +1,10 @@
 <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
 
-  <div class="brand-logo">
+  <a href="{{url('/admin/dashboard')}}"><div class="brand-logo">
     <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
     <h5 class="logo-text">Social Life</h5>
     <div class="close-btn"><i class="zmdi zmdi-close"></i></div>
-  </div>
+  </div></a>
 
   <ul class="metismenu" id="menu">
     <li>
@@ -14,9 +14,20 @@
       </a>
       <ul>
         <li><a href="{{url('/admin/banner')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Quản lý ảnh bìa</a></li>
+        <li><a href="{{url('/admin/about-us')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Về chúng tôi</a></li>
+        <li><a href="{{url('/admin/policy')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Điều khoản chính sách</a></li>
       </ul>
     </li>
-
+    <li>
+    <a class="has-arrow" href="javascript:void();">
+      <div class="parent-icon"> <i class='zmdi zmdi-lock'></i></div>
+      <div class="menu-title">Danh mục</div>
+    </a>
+    <ul>
+      <li><a href="{{url('/admin/categories')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Quản lý danh mục</a>
+      </li>
+    </ul>
+  </li>
     <li>
       <a class="has-arrow" href="javascript:void();">
         <div class="parent-icon"> <i class='zmdi zmdi-layers'></i></div>
@@ -64,80 +75,31 @@
 
   <li>
     <a class="has-arrow" href="javascript:void();">
-      <div class="parent-icon"> <i class='zmdi zmdi-email'></i></div>
-      <div class="menu-title">Mailbox</div>
+      <div class="parent-icon"> <i class='zmdi zmdi-account'></i></div>
+      <div class="menu-title">Người dùng</div>
     </a>
     <ul>
-      <li><a href="mail-inbox.html"><i class="zmdi zmdi-dot-circle-alt"></i> Inbox</a></li>
-      <li><a href="mail-compose.html"><i class="zmdi zmdi-dot-circle-alt"></i> Compose</a></li>
-      <li><a href="mail-read.html"><i class="zmdi zmdi-dot-circle-alt"></i> Read Mail</a></li>
+      <li><a href="{{url('/admin/users')}}"><i class="zmdi zmdi-dot-circle-alt"></i>Quản lý người dùng</a></li>
     </ul>
   </li>
   <li>
     <a class="has-arrow" href="javascript:void();">
-      <div class="parent-icon"> <i class='zmdi zmdi-format-list-bulleted'></i></div>
-      <div class="menu-title">Forms</div>
+      <div class="parent-icon"> <i class='zmdi zmdi-calendar'></i></div>
+      <div class="menu-title">Sự kiện</div>
     </a>
     <ul>
-      <li><a href="form-inputs.html"><i class="zmdi zmdi-dot-circle-alt"></i> Basic Inputs</a></li>
-      <li><a href="form-input-group.html"><i class="zmdi zmdi-dot-circle-alt"></i> Input Groups</a></li>
-      <li><a href="form-layouts.html"><i class="zmdi zmdi-dot-circle-alt"></i> Form Layouts</a></li>
-      <li><a href="form-advanced.html"><i class="zmdi zmdi-dot-circle-alt"></i> Form Advanced</a></li>
-      <li><a href="form-validation.html"><i class="zmdi zmdi-dot-circle-alt"></i> Form Validation</a></li>
-      <li><a href="form-step-wizard.html"><i class="zmdi zmdi-dot-circle-alt"></i> Form Wizard</a></li>
+      <li><a href="{{url('/admin/events')}}"><i class="zmdi zmdi-dot-circle-alt"></i>Quản lý sự kiện</a></li>
+      <li><a href="{{url('/admin/create/event')}}"><i class="zmdi zmdi-dot-circle-alt"></i>Tạo sự kiện</a></li>
     </ul>
   </li>
 
-  <li>
-    <a class="has-arrow" href="javascript:void();">
-      <div class="parent-icon"> <i class='zmdi zmdi-lock'></i></div>
-      <div class="menu-title">Authentication</div>
-    </a>
-    <ul>
-      <li><a href="authentication-signin.html" target="_blank"><i class="zmdi zmdi-dot-circle-alt"></i> SignIn 1</a>
-      </li>
-      <li><a href="authentication-signup.html" target="_blank"><i class="zmdi zmdi-dot-circle-alt"></i> SignUp 1</a>
-      </li>
-      <li><a href="authentication-signin2.html" target="_blank"><i class="zmdi zmdi-dot-circle-alt"></i> SignIn 2</a>
-      </li>
-      <li><a href="authentication-signup2.html" target="_blank"><i class="zmdi zmdi-dot-circle-alt"></i> SignUp 2</a>
-      </li>
-      <li><a href="authentication-lock-screen.html" target="_blank"><i class="zmdi zmdi-dot-circle-alt"></i> Lock
-          Screen</a></li>
-      <li><a href="authentication-reset-password.html" target="_blank"><i class="zmdi zmdi-dot-circle-alt"></i> Reset
-          Password 1</a></li>
-      <li><a href="authentication-reset-password2.html" target="_blank"><i class="zmdi zmdi-dot-circle-alt"></i> Reset
-          Password 2</a></li>
-    </ul>
-  </li>
-
-  <li><a href="calendar.html">
-      <div class="parent-icon"><i class='zmdi zmdi-calendar-check'></i></div>
-      <div class="menu-title">Calendar</div>
-      <div class="badge badge-light ml-auto">New</div>
-    </a></li>
-
-  <li>
-    <a class="has-arrow" href="javascript:void();">
-      <div class="parent-icon"> <i class='zmdi zmdi-invert-colors'></i></div>
-      <div class="menu-title">UI Icons</div>
-    </a>
-    <ul>
-      <li><a href="icons-font-awesome.html"><i class="zmdi zmdi-dot-circle-alt"></i> Font Awesome</a></li>
-      <li><a href="icons-material-designs.html"><i class="zmdi zmdi-dot-circle-alt"></i> Material Design</a></li>
-      <li><a href="icons-themify.html"><i class="zmdi zmdi-dot-circle-alt"></i> Themify Icons</a></li>
-      <li><a href="icons-simple-line-icons.html"><i class="zmdi zmdi-dot-circle-alt"></i> Line Icons</a></li>
-      <li><a href="icons-flags.html"><i class="zmdi zmdi-dot-circle-alt"></i> Flag Icons</a></li>
-    </ul>
-  </li>
   <li>
     <a class="has-arrow" href="javascript:void();">
       <div class="parent-icon"> <i class='zmdi zmdi-grid'></i></div>
-      <div class="menu-title">Tables</div>
+      <div class="menu-title">Thông báo</div>
     </a>
     <ul>
-      <li><a href="table-simple-tables.html"><i class="zmdi zmdi-dot-circle-alt"></i> Simple Tables</a></li>
-      <li><a href="table-data-tables.html"><i class="zmdi zmdi-dot-circle-alt"></i> Data Tables</a></li>
+      <li><a href="{{url('/admin/notifies')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Quản lý thông báo</a></li>
     </ul>
   </li>
   <li>

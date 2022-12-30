@@ -71,18 +71,18 @@ $(document).ready(function () {
             }
         });
     });
-    $('.discount').keyup(function(){
+    $('.discount').keyup(function () {
         var discount = $(this).val();
-        var coin=$('.coin_original').val();
-        var price=$('.price_original').val();
-        if(discount>100||discount<0){
+        var coin = $('.coin_original').val();
+        var price = $('.price_original').val();
+        if (discount > 100 || discount < 0) {
             alert('Giảm giá quá lớn hoặc quá thấp mức cho phép')
-        }else{
-            $('.coin_reduce').val(parseInt(coin)*(100-parseFloat(discount))/100);
-            $('.price_reduce').val(parseInt(price)*(100-parseFloat(discount))/100);
+        } else {
+            $('.coin_reduce').val(parseInt(coin) * (100 - parseFloat(discount)) / 100);
+            $('.price_reduce').val(parseInt(price) * (100 - parseFloat(discount)) / 100);
         }
     });
-    $('.create-question').click(function(){
+    $('.create-question').click(function () {
         $('#new-question').append(
             `<div class="newcreate">
                 <div class="row">
@@ -97,40 +97,154 @@ $(document).ready(function () {
                 <hr>
             </div>`
         );
-        $('.minus-question').click(function(){
+        $('.minus-question').click(function () {
             $(this).closest('.newcreate').remove();
         });
     });
-    $('.minus-question').click(function(){
+    $('.minus-question').click(function () {
         $(this).closest('.newcreate').remove();
     });
-    document.addEventListener("DOMContentLoaded", function() {
-        var lazyloadImages = document.querySelectorAll("img.lazy");    
-        var lazyloadThrottleTimeout;
-        
-        function lazyload () {
-          if(lazyloadThrottleTimeout) {
-            clearTimeout(lazyloadThrottleTimeout);
-          }    
-          
-          lazyloadThrottleTimeout = setTimeout(function() {
-              var scrollTop = window.pageYOffset;
-              lazyloadImages.forEach(function(img) {
-                  if(img.offsetTop < (window.innerHeight + scrollTop)) {
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                  }
-              });
-              if(lazyloadImages.length == 0) { 
-                document.removeEventListener("scroll", lazyload);
-                window.removeEventListener("resize", lazyload);
-                window.removeEventListener("orientationChange", lazyload);
-              }
-          }, 20);
+    $('.type-question').change(function () {
+        var type = $(this).val();
+        if (type == 1) {
+            $('.change-type-question').html('');
+        } else {
+            $('.change-type-question').html(
+                `
+                <div class="row">
+                                    <div class="col-11">
+                                        <label>Câu Trả Lời</label>
+                                        <input type="text" required name="answer[]" class="form-control" required>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-11">
+                                        <label>Câu Trả Lời</label>
+                                        <input type="text" required name="answer[]" class="form-control" required>
+                                    </div>
+                                    <div class="col-1">
+                                        <a href="javascript:void(0)" style="position: relative;top:40%" class="create-question"><i class="fa fa-3x fa-plus-circle"></i></a>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div id="new-question">
+
+                                </div>
+                `
+            );
         }
-        
+        $('.create-question').click(function () {
+            $('#new-question').append(
+                `<div class="newcreate">
+                    <div class="row">
+                        <div class="col-11">
+                            <label>Câu Trả Lời</label>
+                            <input type="text" required name="answer[]" class="form-control">
+                        </div>
+                        <div class="col-1">
+                            <a href="javascript:void(0)" style="position: relative;top:40%" class="minus-question"><i class="fa fa-3x fa-minus-circle"></i></a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>`
+            );
+            $('.minus-question').click(function () {
+                $(this).closest('.newcreate').remove();
+            });
+        });
+    });
+    $('.type-course').change(function () {
+        var type = $(this).val();
+        if (type == 1) {
+            $('.change-type-course').html(``);
+        }else{
+            $('.change-type-course').html(`
+            <div class="row">
+            <div class="col-6">
+                <label>Ngày khai giảng</label>
+                <input type="datetime-local" class="form-control" name="opening_date"  value="{{Carbon::now()}}">
+            </div>
+            <div class="col-6">
+                <label>Ứng dụng</label>
+                <input type="text" class="form-control" name="application">
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <label>Mật khẩu</label>
+                <input type="text" class="form-control" name="password" >
+            </div>
+        </div>
+        <hr>
+            `);
+        }
+
+    });
+    $('.type-book').change(function(){
+        var type = $(this).val();
+        if (type == 1) {
+            $('.change-type-book').html(``);
+        }else{
+            $('.change-type-book').html(`
+            <div class="row">
+            <div class="col-4">
+                <label>Kích thước</label>
+                <input type="text" class="form-control" name="size" >
+            </div>
+            <div class="col-4">
+                <label>Loại bìa</label>
+                <input type="text" class="form-control" name="cover_type" >
+            </div>
+            <div class="col-4">
+                <label>Số trang</label>
+                <input type="number" min="1" class="form-control" name="page" >
+            </div>
+        </div>
+
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <label>Nhà xuất bản</label>
+                <input type="text" class="form-control" name="publish_company" >
+            </div>
+            <div class="col-6">
+                <label>Năm xuất bản</label>
+                <input type="number" min="1000" max="9999" class="form-control" name="publish_year" >
+            </div>
+        </div>
+        <hr>
+            `);
+        }
+    })
+    document.addEventListener("DOMContentLoaded", function () {
+        var lazyloadImages = document.querySelectorAll("img.lazy");
+        var lazyloadThrottleTimeout;
+
+        function lazyload() {
+            if (lazyloadThrottleTimeout) {
+                clearTimeout(lazyloadThrottleTimeout);
+            }
+
+            lazyloadThrottleTimeout = setTimeout(function () {
+                var scrollTop = window.pageYOffset;
+                lazyloadImages.forEach(function (img) {
+                    if (img.offsetTop < (window.innerHeight + scrollTop)) {
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                    }
+                });
+                if (lazyloadImages.length == 0) {
+                    document.removeEventListener("scroll", lazyload);
+                    window.removeEventListener("resize", lazyload);
+                    window.removeEventListener("orientationChange", lazyload);
+                }
+            }, 20);
+        }
+
         document.addEventListener("scroll", lazyload);
         window.addEventListener("resize", lazyload);
         window.addEventListener("orientationChange", lazyload);
-      });
+    });
 });

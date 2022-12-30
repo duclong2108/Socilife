@@ -23,8 +23,20 @@
                     <div class="card">
                         <div class="card-header text-uppercase">Các Dữ Liệu Câu Hỏi</div>
                         <div class="card-body">
-                            <label>Câu hỏi</label>
-                            <input type="text" name="question" required class="form-control">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Câu hỏi</label>
+                                    <input type="text" name="question" required class="form-control">
+                                </div>
+                                <div class="col-6">
+                                    <label>Loại câu hỏi</label>
+                                    <select name="type" required class="form-control type-question">
+                                        <option value="0" selected>Trắc nghiệm</option>
+                                        <option value="1" >Tự luận</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
                             <hr>
                             <label>Ảnh</label>
                             <div class="input-group">
@@ -35,25 +47,27 @@
                             </div>
                             <div id="holder2"></div>
                             <hr>
-                            <div class="row">
-                                <div class="col-11">
-                                    <label>Câu Trả Lời</label>
-                                    <input type="text" required name="answer[]" class="form-control" required>
+                            <div class="change-type-question">
+                                <div class="row">
+                                    <div class="col-11">
+                                        <label>Câu Trả Lời</label>
+                                        <input type="text" required name="answer[]" class="form-control" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-11">
-                                    <label>Câu Trả Lời</label>
-                                    <input type="text" required name="answer[]" class="form-control" required>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-11">
+                                        <label>Câu Trả Lời</label>
+                                        <input type="text" required name="answer[]" class="form-control" required>
+                                    </div>
+                                    <div class="col-1">
+                                        <a href="javascript:void(0)" style="position: relative;top:40%" class="create-question"><i class="fa fa-3x fa-plus-circle"></i></a>
+                                    </div>
                                 </div>
-                                <div class="col-1">
-                                    <a href="javascript:void(0)" style="position: relative;top:40%" class="create-question"><i class="fa fa-3x fa-plus-circle"></i></a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div id="new-question">
+                                <hr>
+                                <div id="new-question">
 
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-gradient-primary">Tạo</button>
                         </div>

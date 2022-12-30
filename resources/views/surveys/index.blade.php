@@ -8,7 +8,7 @@ use App\Models\Question;
     <div class="container-fluid">
         <!-- Breadcrumb-->
         <div class="row pt-2 pb-2">
-            <div class="col-sm-9">
+            <div class="col-sm-7">
                 <h4 class="page-title">Dữ Liệu Bảng</h4>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javaScript:void();">Trang Chủ</a></li>
@@ -16,12 +16,14 @@ use App\Models\Question;
                     <li class="breadcrumb-item active" aria-current="page">Quản lý khảo sát</li>
                 </ol>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-5">
                 <div class="btn-group float-sm-right">
+                <a role="button" class="btn btn-behance waves-effect waves-light" data-toggle="modal" data-target="#exampleModalx"><i class="fa fa-plus mr-1"></i>
+                        Cập Nhật Ảnh Khảo Sát</a>
                     <button type="submit" class="btn btn-facebook waves-effect waves-light delete-all" record="surveys"><i class="fa fa-minus mr-1"></i>Xóa
                         Mục Chọn</button>
                     <a role="button" class="btn btn-light waves-effect waves-light" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus mr-1"></i>
-                        Tạo</a>
+                        Tạo Khảo Sát</a>
                 </div>
             </div>
         </div>
@@ -47,6 +49,46 @@ use App\Models\Question;
                         <div class="modal-footer">
                             <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Tạo</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModalx" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" style="background-color:#007bff;">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Ảnh Khảo Sát</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="{{url('/admin/banner')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Tên Tiêu Đề:</label>
+                                <input type="text" class="form-control" value="{{$banner['survey_text']}}" name="survey_text" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Ảnh Khảo Sát</label>
+                                <div class="input-group">
+                                    <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
+                                        <i class="fa fa-picture-o"></i> Choose Image
+                                    </a>
+                                    <input id="thumbnail" class="form-control" value="{{$banner['survey_image']}}" type="text" name="survey_image" readonly required>
+                                </div>
+                                <div id="holder">
+                                    <input type="image" src="{{$banner['survey_image']}}" width="100px" height="100px">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Cập Nhật</button>
                         </div>
                     </form>
                 </div>

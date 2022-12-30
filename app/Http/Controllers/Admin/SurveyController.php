@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Survey;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Banner;
 class SurveyController extends Controller
 {
     public function index(){
         $surveys=Survey::all();
-        return view('surveys.index', compact('surveys'));
+        $banner=Banner::first();
+        return view('surveys.index', compact('surveys', 'banner'));
     }
     public function create(Request $request){
         $data=$request->all();

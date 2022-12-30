@@ -59,6 +59,32 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::match(['get', 'post'],'/edit/question/{question_id}/survey/{id}', 'QuestionController@edit');
     Route::get('/delete/question/{id}', 'QuestionController@delete');
     Route::get('/delete-all/questions', 'QuestionController@deleteAll');
+    //Users
+    Route::get('/users', 'UserController@index');
+    Route::get('/delete/user/{id}', 'UserController@delete');
+    Route::get('/delete-all/users', 'UserController@deleteAll');
+    //Events
+    Route::get('/events', 'EventController@index');
+    Route::match(['get', 'post'], '/create/event', 'EventController@create');
+    Route::match(['get', 'post'], '/edit/event/{id}', 'EventController@edit');
+    Route::get('/delete/event/{id}', 'EventController@delete');
+    Route::get('/delete-all/events', 'EventController@deleteAll');
+    //Categories
+    Route::get('categories', 'CategoryController@index');
+    Route::post('create/category', 'CategoryController@create');
+    Route::post('/edit/category/{id}', 'CategoryController@edit');
+    Route::get('/delete/category/{id}', 'CategoryController@delete');
+    Route::get('/delete-all/categories', 'CategoryController@deleteAll');
+    //About Us
+    Route::match(['get', 'post'], '/about-us', 'AdminController@aboutUs');
+    //Policy
+    Route::match(['get', 'post'], '/policy', 'AdminController@policy');
+    //Notifies
+    Route::get('/notifies', 'NotifyController@index');
+    Route::post('create/notify', 'NotifyController@create');
+    Route::post('/edit/notify/{id}', 'NotifyController@edit');
+    Route::get('/delete/notify/{id}', 'NotifyController@delete');
+    Route::get('/delete-all/notifies', 'NotifyController@deleteAll');
     //File Manager
     Route::prefix('laravel-filemanager')->group(function () {
       \UniSharp\LaravelFilemanager\Lfm::routes();

@@ -29,12 +29,13 @@
                                 <a id="lfm2" data-input="thumbnail2" data-preview="holder2" class="btn btn-primary text-white">
                                     <i class="fa fa-picture-o"></i> Choose Image
                                 </a>
-                                <input id="thumbnail2" class="form-control" value="{{$banner['image']}}" type="text" name="image" readonly required>
+                                <input id="thumbnail2" class="form-control" value="{{$banner['banner_image']}}" type="text" name="banner_image" readonly required>
                             </div>
                             <div id="holder2">
-                                <input type="image" src="{{$banner['image']}}" width="300px" height="200px">
+                                <input type="image" src="{{$banner['banner_image']}}" width="300px" height="200px">
                             </div>
                             <hr>
+                            
                             <button type="submit" class="btn btn-gradient-primary">Cập Nhật</button>
                         </div>
                     </div>

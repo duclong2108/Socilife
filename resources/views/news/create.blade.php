@@ -40,6 +40,13 @@
               <textarea id="editor" name="description">
                                     </textarea>
               <hr>
+              <label>Danh Mục</label>
+              <select class="form-control single-select" name="category_id" required>
+                @foreach($categories as $category)
+                <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                @endforeach
+              </select>
+              <hr>
               <button type="submit" class="btn btn-gradient-primary">Tạo</button>
             </div>
           </div>

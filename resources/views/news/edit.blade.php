@@ -40,6 +40,17 @@
               <label>Mô Tả</label>
               <textarea id="editor" name="description" required>{{$news['description']}}</textarea>
               <hr>
+              <label>Danh Mục</label>
+              <select class="form-control single-select" name="category_id" required>
+                @foreach($categories as $category)
+                @if($course['category_id']==$category['id'])
+                <option value="{{ $category['id'] }}" selected>{{ $category['name'] }}</option>
+                @else
+                <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                @endif
+                @endforeach
+              </select>
+              <hr>
               <button type="submit" class="btn btn-gradient-primary">Cập Nhật</button>
             </div>
           </div>

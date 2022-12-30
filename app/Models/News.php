@@ -14,6 +14,7 @@ class News extends Model
     'description',
     'image',
     'video',
-    'admin_id'
+    'admin_id',
+    'category_id'
   ];
 }

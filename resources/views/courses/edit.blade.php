@@ -1,11 +1,15 @@
 @extends('layouts.create_edit')
 @section('content')
+<?php
+
+use Carbon\Carbon;
+?>
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumb-->
         <div class="row pt-2 pb-2">
             <div class="col-sm-9">
-                <h4 class="page-title">Tạo</h4>
+                <h4 class="page-title">Chỉnh Sửa</h4>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javaScript:void();">Trang Chủ</a></li>
                     <li class="breadcrumb-item"><a href="javaScript:void();">Cấu Hình</a></li>
@@ -23,8 +27,25 @@
                     <div class="card">
                         <div class="card-header text-uppercase">Các Dữ Liệu Khóa Học</div>
                         <div class="card-body">
-                            <label>Tiêu Đề</label>
-                            <input type="text" value="{{$course['title']}}" name="title" required class="form-control">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Tiêu Đề</label>
+                                    <input type="text" value="{{$course['title']}}" name="title" required class="form-control">
+                                </div>
+                                <div class="col-6">
+                                    <label>Loại Khóa Học</label>
+                                    <select class="form-control type-course" name="type" required>
+                                        @if($course['type'] == 1)
+                                        <option value="1" selected>Offline</option>
+                                        <option value="0">Online</option>
+                                        @else
+                                        <option value="1">Offline</option>
+                                        <option value="0" selected>Online</option>
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+
                             <hr>
                             <label>Ảnh</label>
                             <div class="input-group">
@@ -42,15 +63,15 @@
                                 <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
                                     <i class="fa fa-file-video-o"></i> Choose Video
                                 </a>
-                                <input id="thumbnail" class="form-control" type="text" name="video[]" multiple readonly>
+                                <input id="thumbnail" value="{{$course['video']}}" class="form-control" type="text" name="video[]" multiple readonly>
                             </div>
                             <div id="holder">
                                 @if(!empty($course['video']))
-                                <video width="100" height="100" controls>
-                                    @foreach(explode(",", $course['video']) as $video)
-                                        <source src="{{$video}}" type="video/mp4">
-                                    @endforeach
+                                @foreach(explode(",", $course['video']) as $video)
+                                <video width="300" height="200" controls>
+                                    <source src="{{$video}}" type="video/mp4">
                                 </video>
+                                @endforeach
                                 @endif
                             </div>
                             <hr>
@@ -79,9 +100,46 @@
                                 </div>
                             </div>
                             <hr>
-                            <label>Giảm giá (%)</label>
-                            <input type="text" class="form-control discount" value="{{$course['discount']}}" name="discount">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Giảm giá (%)</label>
+                                    <input type="text" class="form-control discount" name="discount" value="{{$course['discount']}}">
+                                </div>
+                                <div class="col-6">
+                                    <label>Danh Mục</label>
+                                    <select class="form-control single-select" name="category_id" required>
+                                        @foreach($categories as $category)
+                                        @if($course['category_id']==$category['id'])
+                                        <option value="{{ $category['id'] }}" selected>{{ $category['name'] }}</option>
+                                        @else
+                                        <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <hr>
+                            <div class="change-type-course">
+                                @if($course['type'] == 0)
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label>Ngày khai giảng</label>
+                                        <input type="datetime-local" class="form-control" name="opening_date" value="{{$course['opening_date']}}">
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Ứng dụng</label>
+                                        <input type="text" class="form-control" name="application" value="{{$course['application']}}">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label>Mật khẩu</label>
+                                        <input type="text" class="form-control" name="password" value="{{$course['password']}}">
+                                    </div>
+                                </div>
+                                @endif
+                            </div>
                             <button type="submit" class="btn btn-gradient-primary">Cập Nhật</button>
                         </div>
                     </div>
@@ -92,7 +150,6 @@
 
 
         </form>
-
 
         <!--End Row-->
 
