@@ -15,7 +15,9 @@ class QuestionController extends Controller
     public function create(Request $request, $id){
         if($request->isMethod('POST')){
             $data=$request->all();
+            if(isset($data['answer'])){
             $data['answer']=implode("|||", $data['answer']);
+            }
             $data['survey_id']=$id;
             Question::create($data);
             ALert::success('Thành công', 'Tạo Câu Hỏi Thành Công');
@@ -27,7 +29,9 @@ class QuestionController extends Controller
         $question=Question::find($question_id);
         if($request->isMethod('POST')){
             $data=$request->all();
+            if(isset($data['answer'])){
             $data['answer']=implode("|||", $data['answer']);
+            }
             $data['survey_id']=$id;
             $question->update($data);
             ALert::success('Thành công', 'Cập Nhật Câu Hỏi Thành Công');

@@ -11,6 +11,7 @@ class Banner extends Model
     protected $table = 'banners';
     protected $fillable = [
         'banner_image',
+        'banner_link',
         'book_image',
         'book_text',
         'course_image',
@@ -18,6 +19,7 @@ class Banner extends Model
         'survey_image',
         'survey_text',
         'register_image',
-        'register_text'
+        'register_text',
+        'splash_image'
     ];
 }

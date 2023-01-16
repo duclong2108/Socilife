@@ -34,8 +34,8 @@ use Carbon\Carbon;
                                 <div class="col-6">
                                     <label>Loại Khóa Học</label>
                                     <select class="form-control type-course" name="type" required>
-                                        <option value="1" selected>Offline</option>
-                                        <option value="0">Online</option>
+                                        <option value="1" selected>Online-Video</option>
+                                        <option value="0">Offline-Meet</option>
                                     </select>
                                 </div>
                             </div>
@@ -50,15 +50,7 @@ use Carbon\Carbon;
                             </div>
                             <div id="holder2"></div>
                             <hr>
-                            <label>Video</label>
-                            <div class="input-group">
-                                <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
-                                    <i class="fa fa-file-video-o"></i> Choose Video
-                                </a>
-                                <input id="thumbnail" class="form-control" type="text" name="video[]" multiple readonly>
-                            </div>
-                            <!-- <div id="holder"></div> -->
-                            <hr>
+                            
                             <label>Mô Tả</label>
                             <textarea id="editor" name="description" required>
                                     </textarea>

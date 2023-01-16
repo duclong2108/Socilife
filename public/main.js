@@ -104,6 +104,81 @@ $(document).ready(function () {
     $('.minus-question').click(function () {
         $(this).closest('.newcreate').remove();
     });
+    var count=$('.slg_banner').val();
+    $('.create-banner').click(function () {
+        count+=1;
+        $('#new-banner').append(
+            `<div class="newcreate">
+            <div class="row">
+            <div class="col-6">
+            <label>Ảnh Bìa Trang Chủ</label>
+                <div class="input-group">
+                    <a id="lfm`+count+`" data-input="thumbnail`+count+`" data-preview="holder`+count+`" class="btn btn-primary text-white">
+                        <i class="fa fa-picture-o"></i> Choose Image
+                    </a>
+                    <input id="thumbnail`+count+`" class="form-control" value="" type="text" name="banner_image[]" readonly required>
+                </div>
+                <div id="holder`+count+`">
+                    
+                </div>
+            </div>
+            <div class="col-5">
+                <label>Link</label>
+                <input type="text" class="form-control" required name="banner_link[]">
+            </div>
+            <div class="col-1">
+            <a href="javascript:void(0)" style="position: relative;top:40%" class="minus-banner"><i class="fa fa-3x fa-minus-circle"></i></a>
+            </div>
+        </div>
+                <hr>
+            </div>`
+        );
+        $('.minus-banner').click(function () {
+            $(this).closest('.newcreate').remove();
+        });
+        var lfm = function(id, type, options) {
+            let button = document.getElementById(id);
+
+            button.addEventListener('click', function() {
+                var route_prefix = (options && options.prefix) ? options.prefix : 'admin/laravel-filemanager';
+                var target_input = document.getElementById(button.getAttribute('data-input'));
+                var target_preview = document.getElementById(button.getAttribute('data-preview'));
+
+                window.open(route_prefix + '?type=' + options.type || 'file', 'FileManager', 'width=1200,height=600');
+                window.SetUrl = function(items) {
+                    var file_path = items.map(function(item) {
+                        return item.url;
+                    }).join(',');
+
+                    // set the value of the desired input to image url
+                    target_input.value = file_path;
+                    target_input.dispatchEvent(new Event('change'));
+
+                    // clear previous preview
+                    target_preview.innerHtml = '';
+
+                    // set or change the preview image src
+                    items.forEach(function(item) {
+                        let img = document.createElement('img')
+                        img.setAttribute('style', 'height: 5rem')
+                        img.setAttribute('src', item.thumb_url)
+                        target_preview.appendChild(img);
+                    });
+
+                    // trigger change event
+                    target_preview.dispatchEvent(new Event('change'));
+                };
+            });
+        };
+
+        lfm(`lfm`+count+``, 'file', {
+            prefix: 'admin/laravel-filemanager'
+        });
+    });
+        
+    $('.minus-banner').click(function () {
+        $(this).closest('.newcreate').remove();
+    });
     $('.type-question').change(function () {
         var type = $(this).val();
         if (type == 1) {
@@ -163,18 +238,22 @@ $(document).ready(function () {
             <div class="row">
             <div class="col-6">
                 <label>Ngày khai giảng</label>
-                <input type="datetime-local" class="form-control" name="opening_date"  value="{{Carbon::now()}}">
+                <input type="datetime-local" class="form-control" name="opening_date" required value="{{Carbon::now()}}">
             </div>
             <div class="col-6">
                 <label>Ứng dụng</label>
-                <input type="text" class="form-control" name="application">
+                <input type="text" class="form-control" name="application" required>
             </div>
         </div>
         <hr>
         <div class="row">
             <div class="col-6">
                 <label>Mật khẩu</label>
-                <input type="text" class="form-control" name="password" >
+                <input type="text" class="form-control" name="password" required>
+            </div>
+            <div class="col-6">
+                <label>Link Học</label>
+                <input type="text" class="form-control" name="link" required>
             </div>
         </div>
         <hr>
@@ -191,15 +270,15 @@ $(document).ready(function () {
             <div class="row">
             <div class="col-4">
                 <label>Kích thước</label>
-                <input type="text" class="form-control" name="size" >
+                <input type="text" class="form-control" name="size" required>
             </div>
             <div class="col-4">
                 <label>Loại bìa</label>
-                <input type="text" class="form-control" name="cover_type" >
+                <input type="text" class="form-control" name="cover_type" required>
             </div>
             <div class="col-4">
                 <label>Số trang</label>
-                <input type="number" min="1" class="form-control" name="page" >
+                <input type="number" min="1" class="form-control" name="page" required>
             </div>
         </div>
 
@@ -207,11 +286,11 @@ $(document).ready(function () {
         <div class="row">
             <div class="col-6">
                 <label>Nhà xuất bản</label>
-                <input type="text" class="form-control" name="publish_company" >
+                <input type="text" class="form-control" name="publish_company" required>
             </div>
             <div class="col-6">
                 <label>Năm xuất bản</label>
-                <input type="number" min="1000" max="9999" class="form-control" name="publish_year" >
+                <input type="number" min="1000" max="9999" class="form-control" name="publish_year" required>
             </div>
         </div>
         <hr>

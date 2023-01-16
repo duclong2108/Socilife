@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Banner;
-use App\Models\Category;
+use App\Models\CourseCategory;
 class CourseController extends Controller
 {
 
@@ -22,7 +22,7 @@ class CourseController extends Controller
   }
   public function create(Request $request)
   {
-    $categories=Category::all();
+    $categories=CourseCategory::all();
     if ($request->isMethod('POST')) {
       $data = $request->all();
       // dd($data);
@@ -33,18 +33,9 @@ class CourseController extends Controller
         ALert::error('Lỗi', $validator->errors()->first());
         return redirect()->back();
       } else {
-        if (count($data['video'])>0) {
-          // $validator1 = Validator::make($data, [
-          //   'video.*' => 'mimes:mp4,ogg,ogv,webm'
-          // ]);
-          // if ($validator1->fails()) {
-          //   ALert::error('Lỗi', $validator1->errors()->first());
-          //   return redirect()->back();
-          // }
-          $data['video'] = implode(",", $data['video']);
-        }
-        if(count(Category::where('id',$data['category_id'])->get())==0){
-          $category=Category::create(['name'=>ucfirst(strtolower($data['category_id']))]);
+
+        if(count(CourseCategory::where('id',$data['category_id'])->get())==0){
+          $category=CourseCategory::create(['name'=>ucfirst(strtolower($data['category_id']))]);
           $data['category_id']=$category['id'];
         }
         $data['admin_id'] = Auth::guard('admin')->user()->id;
@@ -64,7 +55,7 @@ class CourseController extends Controller
   public function edit(Request $request, $id)
   {
     $course = Course::find($id);
-    $categories=Category::all();
+    $categories=CourseCategory::all();
     if ($request->isMethod('POST')) {
       $data = $request->all();
       // dd($data);
@@ -75,18 +66,9 @@ class CourseController extends Controller
         ALert::error('Lỗi', $validator->errors()->first());
         return redirect()->back();
       } else {
-        if (count($data['video'])>0) {
-          // $validator1 = Validator::make($data, [
-          //   'video.*' => 'mimes:mp4,ogg,ogv,webm'
-          // ]);
-          // if ($validator1->fails()) {
-          //   ALert::error('Lỗi', $validator1->errors()->first());
-          //   return redirect()->back();
-          // }
-          $data['video'] = implode(",", $data['video']);
-        }
-        if(count(Category::where('id',$data['category_id'])->get())==0){
-          $category=Category::create(['name'=>ucfirst(strtolower($data['category_id']))]);
+
+        if(count(CourseCategory::where('id',$data['category_id'])->get())==0){
+          $category=CourseCategory::create(['name'=>ucfirst(strtolower($data['category_id']))]);
           $data['category_id']=$category['id'];
         }
         $data['admin_id'] = Auth::guard('admin')->user()->id;

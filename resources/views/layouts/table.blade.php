@@ -33,7 +33,7 @@
 
 </head>
 
-<body class="bg-theme bg-theme11">
+<body class="bg-theme bg-theme2">
 
   <!-- Start wrapper-->
   <div id="wrapper">
@@ -107,15 +107,15 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="//cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
   <script>
-    
+
     var options = {
-                filebrowserImageBrowseUrl: 'admin/laravel-filemanager?type=Images',
-                filebrowserImageUploadUrl: 'admin/laravel-filemanager/upload?type=Images&_token=',
-                filebrowserBrowseUrl: 'admin/laravel-filemanager?type=Files',
-                filebrowserUploadUrl: 'admin/laravel-filemanager/upload?type=Files&_token='
+                filebrowserImageBrowseUrl: 'admin/laravel-filemanager?type=undefined',
+                filebrowserImageUploadUrl: 'admin/laravel-filemanager?type=undefined',
+                filebrowserBrowseUrl: 'admin/laravel-filemanager?type=undefined',
+                filebrowserUploadUrl: 'admin/laravel-filemanager?type=undefined'
             };
 
-        CKEDITOR.replace( 'editor', options );
+        CKEDITOR.replace( 'editor',options );
         CKEDITOR.replace( 'editor1', options );
   </script>
   <script>
@@ -157,6 +157,52 @@
         lfm('lfm', 'file', {
             prefix: 'admin/laravel-filemanager'
         });
+    </script>
+    <script>
+        var lfm = function(id, type, options) {
+            let button = document.getElementById(id);
+
+            button.addEventListener('click', function() {
+                var route_prefix = (options && options.prefix) ? options.prefix : 'admin/laravel-filemanager';
+                var target_input = document.getElementById(button.getAttribute('data-input'));
+                var target_preview = document.getElementById(button.getAttribute('data-preview'));
+
+                window.open(route_prefix + '?type=' + options.type || 'file', 'FileManager', 'width=1200,height=600');
+                window.SetUrl = function(items) {
+                    var file_path = items.map(function(item) {
+                        return item.url;
+                    }).join(',');
+
+                    // set the value of the desired input to image url
+                    target_input.value = file_path;
+                    target_input.dispatchEvent(new Event('change'));
+
+                    // clear previous preview
+                    target_preview.innerHtml = '';
+
+                    // set or change the preview image src
+                    items.forEach(function(item) {
+                        let img = document.createElement('img')
+                        img.setAttribute('style', 'height: 5rem')
+                        img.setAttribute('src', item.thumb_url)
+                        target_preview.appendChild(img);
+                    });
+
+                    // trigger change event
+                    target_preview.dispatchEvent(new Event('change'));
+                };
+            });
+        };
+
+        lfm('lfm2', 'file', {
+            prefix: 'admin/laravel-filemanager'
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js" integrity="sha512-jNDtFf7qgU0eH/+Z42FG4fw3w7DM/9zbgNPe3wfJlCylVDTT3IgKW5r92Vy9IHa6U50vyMz5gRByIu4YIXFtaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){
+            $('img').lazyload();
+        })
     </script>
 </body>
 

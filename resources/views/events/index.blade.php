@@ -46,7 +46,7 @@
                   <tr>
                     <td><input type="checkbox" value="{{$event['id']}}" class="sub_ck" data-id="{{$event['id']}}"></td>
                     <td>{{ ++$key }}</td>
-                    <td> <img src="{{$event['image']}}" width="100px" height="100px"></td>
+                    <td> <img data-original="{{$event['image']}}" width="100px" height="100px"></td>
                     <td>
                       {{ $event['title'] }}
                     </td>

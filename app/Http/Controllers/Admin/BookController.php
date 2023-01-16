@@ -8,7 +8,7 @@ use App\Models\Book;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Banner;
-use App\Models\Category;
+use App\Models\BookCategory;
 class BookController extends Controller
 {
     public function index(Request $request)
@@ -19,16 +19,16 @@ class BookController extends Controller
   }
   public function create(Request $request)
   {
-    $categories=Category::all();
+    $categories=BookCategory::all();
     if ($request->isMethod('POST')) {
       $data = $request->all();
       // dd($data);
-      if(count(Category::where('id',$data['category_id'])->get())==0){
-        $category=Category::create(['name'=>ucfirst(strtolower($data['category_id']))]);
+      if(count(BookCategory::where('id',$data['category_id'])->get())==0){
+        $category=BookCategory::create(['name'=>ucfirst(strtolower($data['category_id']))]);
         $data['category_id']=$category['id'];
         $data['category_name']=$category['name'];
       }else{
-        $data['category_name']=Category::find(['category_id'])->name;
+        $data['category_name']=BookCategory::find($data['category_id'])->name;
       }
       $data['admin_id'] = Auth::guard('admin')->user()->id;
         $data['admin_name'] = Auth::guard('admin')->user()->name;
@@ -40,21 +40,21 @@ class BookController extends Controller
         ALert::error('Lỗi', 'Thiếu Ảnh');
         return redirect()->back();
       }
-      
+
     }
     return view('books.create', compact('categories'));
   }
   public function edit(Request $request, $id){
     $book=Book::find($id);
-    $categories=Category::all();
+    $categories=BookCategory::all();
     if($request->isMethod('POST')){
       $data=$request->all();
-      if(count(Category::where('id',$data['category_id'])->get())==0){
-        $category=Category::create(['name'=>ucfirst(strtolower($data['category_id']))]);
+      if(count(BookCategory::where('id',$data['category_id'])->get())==0){
+        $category=BookCategory::create(['name'=>ucfirst(strtolower($data['category_id']))]);
         $data['category_id']=$category['id'];
         $data['category_name']=$category['name'];
       }else{
-        $data['category_name']=Category::find($data['category_id'])->name;
+        $data['category_name']=BookCategory::find($data['category_id'])->name;
       }
       $data['admin_id'] = Auth::guard('admin')->user()->id;
         $data['admin_name'] = Auth::guard('admin')->user()->name;
@@ -66,7 +66,7 @@ class BookController extends Controller
         ALert::error('Lỗi', 'Thiếu Ảnh');
         return redirect()->back();
       }
-      
+
     }
     return view('books.edit', compact('book', 'categories'));
   }
@@ -80,5 +80,5 @@ class BookController extends Controller
     Book::whereIn('id', explode(",",$data['ids']))->delete();
     return response()->json(['status' => true]);
   }
-  
+
 }

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Notify;
+use App\Models\NotifyUser;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\User;
 class NotifyController extends Controller
 {
     public function index(){
@@ -14,7 +16,10 @@ class NotifyController extends Controller
     }
     public function create(Request $request){
         $data=$request->all();
-        Notify::create($data);
+        $notify=Notify::create($data);
+        foreach(User::all() as $user){
+            NotifyUser::create(['notify_id'=>$notify['id'], 'user_id'=>$user['id']]);
+        }
         ALert::success('Thành công', 'Tạo Thông Báo Thành Công');
         return redirect()->back();
     }

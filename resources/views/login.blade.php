@@ -26,7 +26,7 @@
 
 </head>
 
-<body class="bg-theme bg-theme11">
+<body class="bg-theme bg-theme2">
 
 
     <!-- Start wrapper-->

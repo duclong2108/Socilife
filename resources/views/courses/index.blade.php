@@ -81,6 +81,7 @@
                     <th>Ảnh</th>
                     <th>Tiêu đề</th>
                     <th>Số lượng bán</th>
+                    <th>Loại khóa học</th>
                     <th>Ngày tạo</th>
                     <td style="display: none;">Mô tả</td>
                     <td style="display: none;">Tên người đăng</td>
@@ -98,13 +99,19 @@
                   <tr>
                     <td><input type="checkbox" value="{{$course['id']}}" class="sub_ck" data-id="{{$course['id']}}"></td>
                     <td>{{ ++$key }}</td>
-                    <td> <img src="{{$course['image']}}" width="100px" height="100px"></td>
+                    <td> <img data-original="{{$course['image']}}" width="100px" height="100px"></td>
                     <td>
                       {{ $course['title'] }}
                     </td>
 
 
                     <td>{{ $course['sold'] }} đã bán</td>
+                    <td>@if($course['type']==0)
+                            Offline-Meet
+                        @else
+                            Online-Video
+                        @endif
+                    </td>
                     <td>{{ date('d/m/Y', strtotime($course['created_at'])) }}</td>
                     <td style="display: none;">{!!$course['description']!!}</td>
                     <td style="display: none;">{{$course['admin_name']}}</td>
@@ -116,6 +123,10 @@
                     <td style="display: none;">{{$course['coin_reduce']}}</td>
                     <td style="font-size: 30px">
                       <center>
+                        @if($course['type']==1)
+                      <a href="{{ url('admin/videos/course/' . $course['id']) }}" style="color:aqua"
+                          title="Xem các video"><i class="fa fa-eye"></i></a>&nbsp;&nbsp;&nbsp;
+                          @endif
                         <a href="{{ url('admin/edit/course/' . $course['id']) }}" style="color:greenyellow" title="Chỉnh sửa khóa học"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
                         <a href="javascript:void(0)" style="color: red" class="confirmdelete" record="course" recordid="{{$course['id']}}" title="Xóa khóa học"><i class="fa fa-trash"></i></a>
                       </center>

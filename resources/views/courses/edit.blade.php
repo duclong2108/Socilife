@@ -36,11 +36,11 @@ use Carbon\Carbon;
                                     <label>Loại Khóa Học</label>
                                     <select class="form-control type-course" name="type" required>
                                         @if($course['type'] == 1)
-                                        <option value="1" selected>Offline</option>
-                                        <option value="0">Online</option>
+                                        <option value="1" selected>Online-Video</option>
+                                        <option value="0">Offline-Meet</option>
                                         @else
-                                        <option value="1">Offline</option>
-                                        <option value="0" selected>Online</option>
+                                        <option value="1">Online-Video</option>
+                                        <option value="0" selected>Offline-Meet</option>
                                         @endif
                                     </select>
                                 </div>
@@ -55,28 +55,11 @@ use Carbon\Carbon;
                                 <input id="thumbnail2" class="form-control" value="{{$course['image']}}" type="text" name="image" readonly required>
                             </div>
                             <div id="holder2">
-                                <input type="image" src="{{$course['image']}}" width="100px" height="100px">
-                            </div>
-                            <hr>
-                            <label>Video</label>
-                            <div class="input-group">
-                                <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
-                                    <i class="fa fa-file-video-o"></i> Choose Video
-                                </a>
-                                <input id="thumbnail" value="{{$course['video']}}" class="form-control" type="text" name="video[]" multiple readonly>
-                            </div>
-                            <div id="holder">
-                                @if(!empty($course['video']))
-                                @foreach(explode(",", $course['video']) as $video)
-                                <video width="300" height="200" controls>
-                                    <source src="{{$video}}" type="video/mp4">
-                                </video>
-                                @endforeach
-                                @endif
+                                <img data-original="{{$course['image']}}" width="100px" height="100px">
                             </div>
                             <hr>
                             <label>Mô Tả</label>
-                            <textarea id="editor" name="description" required>{{$course['description']}}</textarea>
+                            <textarea id="editor" name="description" required>{!!$course['description']!!}</textarea>
                             <hr>
                             <div class="row">
                                 <div class="col-6">
@@ -124,20 +107,25 @@ use Carbon\Carbon;
                                 <div class="row">
                                     <div class="col-6">
                                         <label>Ngày khai giảng</label>
-                                        <input type="datetime-local" class="form-control" name="opening_date" value="{{$course['opening_date']}}">
+                                        <input type="datetime-local" class="form-control" name="opening_date" value="{{$course['opening_date']}}" required>
                                     </div>
                                     <div class="col-6">
                                         <label>Ứng dụng</label>
-                                        <input type="text" class="form-control" name="application" value="{{$course['application']}}">
+                                        <input type="text" class="form-control" name="application" value="{{$course['application']}}" required>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-6">
                                         <label>Mật khẩu</label>
-                                        <input type="text" class="form-control" name="password" value="{{$course['password']}}">
+                                        <input type="text" class="form-control" name="password" value="{{$course['password']}}" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Link học</label>
+                                        <input type="text" class="form-control" name="link" value="{{$course['link']}}" required>
                                     </div>
                                 </div>
+                                <hr>
                                 @endif
                             </div>
                             <button type="submit" class="btn btn-gradient-primary">Cập Nhật</button>

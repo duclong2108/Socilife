@@ -94,7 +94,7 @@ use App\Models\Question;
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="recipient-name" class="col-form-label">Mô tả:</label>
-                                                            <textarea id="editor" name="description">{{$notify['description']}}</textarea>
+                                                            <textarea id="editor1" name="description">{{$notify['description']}}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">

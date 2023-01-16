@@ -44,6 +44,13 @@
                                 <label for="message-text" class="col-form-label">Mô tả:</label>
                                 <textarea class="form-control" name="description" id="editor"></textarea>
                             </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Kiểm tra:</label>
+                                <select class="form-control" name="check" required> 
+                                    <option value="0" selected>Khóa</option>
+                                    <option value="1">Mở</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
@@ -67,6 +74,7 @@
                                         <th>#</th>
                                         <th>Tiêu đề</th>
                                         <th>Mô tả</th>
+                                        <th>Kiểm tra</th>
                                         <th>Tình Trạng</th>
                                     </tr>
                                 </thead>
@@ -93,6 +101,18 @@
                                                             <label for="message-text" class="col-form-label">Mô tả:</label>
                                                             <textarea class="form-control" name="description" id="editor1">{{$chapter['description']}}</textarea>
                                                         </div>
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Kiểm tra:</label>
+                                                            <select class="form-control" name="check" required> 
+                                                                @if($chapter['check']==0)
+                                                                <option value="0" selected>Khóa</option>
+                                                                <option value="1">Mở</option>
+                                                                @else
+                                                                <option value="0" >Khóa</option>
+                                                                <option value="1" selected>Mở</option>
+                                                                @endif
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
@@ -110,6 +130,13 @@
                                         </td>
                                         <td>
                                             {!! $chapter['description'] !!}
+                                        </td>
+                                        <td>
+                                            @if($chapter['check']==0)
+                                                Khóa
+                                            @else
+                                                Mở
+                                            @endif
                                         </td>
                                         <td style="font-size: 30px">
                                             <center>

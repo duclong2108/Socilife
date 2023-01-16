@@ -14,5 +14,6 @@ class BookChapter extends Model
         'book_id',
         'title',
         'description',
+        'check'
     ];
 }

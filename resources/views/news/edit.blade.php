@@ -34,7 +34,7 @@
                 <input id="thumbnail2" class="form-control" value="{{$news['image']}}" type="text" name="image" readonly required>
               </div>
               <div id="holder2">
-                <input type="image" src="{{$news['image']}}" width="100px" height="100px">
+                <img data-original="{{$news['image']}}" width="100px" height="100px">
               </div>
               <hr>
               <label>Mô Tả</label>
@@ -43,7 +43,7 @@
               <label>Danh Mục</label>
               <select class="form-control single-select" name="category_id" required>
                 @foreach($categories as $category)
-                @if($course['category_id']==$category['id'])
+                @if($news['category_id']==$category['id'])
                 <option value="{{ $category['id'] }}" selected>{{ $category['name'] }}</option>
                 @else
                 <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
