@@ -26,7 +26,12 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::match(['get', 'post'], '/edit/course/{id}', 'CourseController@edit');
     Route::get('/delete/course/{id}', 'CourseController@delete');
     Route::get('/delete-all/courses', 'CourseController@deleteAll');
-
+    //Video
+    Route::get('/videos/course/{id}', 'VideoCourseController@index');
+    Route::post('/create/video/course/{id}', 'VideoCourseController@create');
+    Route::post('/edit/video/{id}', 'VideoCourseController@edit');
+    Route::get('/delete/video/{id}', 'VideoCourseController@delete');
+    Route::get('/delete-all/videos', 'VideoCourseController@deleteAll');
     //News
     Route::get('/news', 'NewsController@index');
     Route::match(['get', 'post'], '/create/news', 'NewsController@create');
@@ -69,12 +74,18 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::match(['get', 'post'], '/edit/event/{id}', 'EventController@edit');
     Route::get('/delete/event/{id}', 'EventController@delete');
     Route::get('/delete-all/events', 'EventController@deleteAll');
-    //Categories
-    Route::get('categories', 'CategoryController@index');
-    Route::post('create/category', 'CategoryController@create');
-    Route::post('/edit/category/{id}', 'CategoryController@edit');
-    Route::get('/delete/category/{id}', 'CategoryController@delete');
-    Route::get('/delete-all/categories', 'CategoryController@deleteAll');
+    //Category Courses
+    Route::get('course/categories', 'CourseCategoryController@index');
+    Route::post('create/course/category', 'CourseCategoryController@create');
+    Route::post('/edit/course/category/{id}', 'CourseCategoryController@edit');
+    Route::get('/delete/course/category/{id}', 'CourseCategoryController@delete');
+    Route::get('/delete-all/course-categories', 'CourseCategoryController@deleteAll');
+
+    Route::get('book/categories', 'BookCategoryController@index');
+    Route::post('create/book/category', 'BookCategoryController@create');
+    Route::post('/edit/book/category/{id}', 'BookCategoryController@edit');
+    Route::get('/delete/book/category/{id}', 'BookCategoryController@delete');
+    Route::get('/delete-all/book-categories', 'BookCategoryController@deleteAll');
     //About Us
     Route::match(['get', 'post'], '/about-us', 'AdminController@aboutUs');
     //Policy

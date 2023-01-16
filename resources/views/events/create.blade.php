@@ -35,10 +35,22 @@
                             </div>
                             <div id="holder2"></div>
                             <hr>
-                            <label>Ngày Diễn Ra</label>
-                            <input type="datetime-local" name="date" required class="form-control">
+                            <label>Mô Tả</label>
+              <textarea id="editor" name="description">
+                                    </textarea>
+              <hr>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Ngày Diễn Ra</label>
+                                    <input type="datetime-local" name="date" required class="form-control">
+                                </div>
+                                <div class="col-6">
+                                    <label>Link Tham Dự</label>
+                                    <input type="text" name="link" required class="form-control">
+                                </div>
+                            </div>
                             <hr>
-                            
+
                             <button type="submit" class="btn btn-gradient-primary">Tạo</button>
                         </div>
                     </div>

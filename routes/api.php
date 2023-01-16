@@ -24,12 +24,16 @@ Route::namespace('Api')->group(function(){
     Route::post('/send-email', 'UserController@sendEmail');
     Route::post('/check-otp', 'UserController@checkOtp');
     Route::post('/reset-password', 'UserController@resetPassword');
+    Route::post('/change-password', 'UserController@changePassword');
     //Home
     Route::get('/home', 'HomeController@index');
     Route::post('/search', 'HomeController@search');
     Route::match(['get','post'],'/filter', 'HomeController@filter');
     Route::get('/about-us', 'HomeController@aboutUs');
     Route::get('/policy', 'HomeController@policy');
+    Route::get('/cities', 'HomeController@cities');
+    Route::get('/districts', 'HomeController@districts');
+    Route::get('/wards', 'HomeController@wards');
     //Courses
     Route::get('/courses', 'CourseController@index');
     Route::get('/detail/course', 'CourseController@detail');
@@ -37,20 +41,31 @@ Route::namespace('Api')->group(function(){
     //Books
     Route::get('/books', 'BookController@index');
     Route::get('/detail/book', 'BookController@detail');
+    Route::post('/search/books', 'BookController@searchBooks');
     //News
     Route::get('/news', 'NewsController@index');
     Route::get('/detail/news', 'NewsController@detail');
     //Surveys
     Route::get('/surveys', 'SurveyController@index');
+    Route::post('/send-survey', 'SurveyController@sendSurvey');
+
+
     Route::get('/questions/survey', 'SurveyController@questions');
+
+    Route::get('/notifies', 'NotifyController@index');
+
+    Route::get('/events', 'EventController@index');
+    Route::get('/detail/event', 'EventController@detail');
+    Route::match(['get','post'],'/detail/notify', 'NotifyController@detail');
+    Route::match(['get','post'],'/profile', 'UserController@profile');
     Route::group(['middleware' => 'auth:api'], function() {
         Route::get('/logout', 'UserController@logout');
-        Route::match(['get','post'],'/profile', 'UserController@profile');
-        Route::post('/change-password', 'UserController@changePassword');
+
+
         Route::post('/buy/course', 'CourseController@buyCourse');
         Route::post('/buy/book', 'BookController@buyBook');
-        Route::get('/notifies', 'NotifyController@index');
-        Route::post('/send-survey', 'SurveyController@sendSurvey');
-        // Route::post('/register-professional', 'UserController@registerProfessional');
+
+
+        Route::post('/register-professional', 'UserController@registerProfessional');
     });
 });

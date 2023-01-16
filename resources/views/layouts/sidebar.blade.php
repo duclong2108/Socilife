@@ -19,14 +19,14 @@
       </ul>
     </li>
     <li>
-    <a class="has-arrow" href="javascript:void();">
+    <!-- <a class="has-arrow" href="javascript:void();">
       <div class="parent-icon"> <i class='zmdi zmdi-lock'></i></div>
       <div class="menu-title">Danh mục</div>
     </a>
     <ul>
       <li><a href="{{url('/admin/categories')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Quản lý danh mục</a>
       </li>
-    </ul>
+    </ul> -->
   </li>
     <li>
       <a class="has-arrow" href="javascript:void();">
@@ -34,6 +34,7 @@
         <div class="menu-title">Khóa học</div>
       </a>
       <ul>
+        <li><a href="{{url('/admin/course/categories')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh mục khóa học</a></li>
         <li><a href="{{url('/admin/courses')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Quản lý khóa học</a></li>
         <li><a href="{{url('/admin/create/course')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Tạo khóa học</a></li>
       </ul>
@@ -55,11 +56,12 @@
   <li>
     <a class="has-arrow" href="javascript:void();">
       <div class="parent-icon"> <i class='zmdi zmdi-chart'></i></div>
-      <div class="menu-title">Sách</div>
+      <div class="menu-title">Học Liệu-Dữ Liệu</div>
     </a>
     <ul>
-      <li><a href="{{url('/admin/books')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Quản lý sách</a></li>
-      <li><a href="{{url('/admin/create/book')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Tạo sách</a></li>
+      <li><a href="{{url('/admin/book/categories')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh mục học liệu-dữ liệu</a></li>
+      <li><a href="{{url('/admin/books')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Quản lý học liệu-dữ liệu</a></li>
+      <li><a href="{{url('/admin/create/book')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Tạo học liệu-dữ liệu</a></li>
     </ul>
   </li>
 
@@ -102,7 +104,7 @@
       <li><a href="{{url('/admin/notifies')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Quản lý thông báo</a></li>
     </ul>
   </li>
-  <li>
+  <!-- <li>
     <a class="has-arrow" href="javascript:void();">
       <div class="parent-icon"> <i class='zmdi zmdi-map'></i></div>
       <div class="menu-title">Maps</div>
@@ -160,7 +162,7 @@
   <li><a href="javascript:void();">
       <div class="parent-icon"><i class='zmdi zmdi-share'></i></div>
       <div class="menu-title">Information</div>
-    </a></li>
+    </a></li> -->
   </ul>
 
 </div>

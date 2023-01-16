@@ -80,7 +80,7 @@ use App\Models\Question;
                                     <input id="thumbnail" class="form-control" value="{{$banner['survey_image']}}" type="text" name="survey_image" readonly required>
                                 </div>
                                 <div id="holder">
-                                    <input type="image" src="{{$banner['survey_image']}}" width="100px" height="100px">
+                                    <img data-original="{{$banner['survey_image']}}" width="100px" height="100px">
                                 </div>
                             </div>
                         </div>

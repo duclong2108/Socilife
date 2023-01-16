@@ -12,6 +12,10 @@ class BannerController extends Controller
         $banner=Banner::first();
         if($request->isMethod('post')){
             $data=$request->all();
+            if(isset($data['banner_image'])){
+            $data['banner_image']=implode('|||',$data['banner_image']);
+            $data['banner_link']=implode('|||',$data['banner_link']);
+            }
             $banner->update($data);
             ALert::success('Thành công', 'Cập Nhật Thành Công');
             return redirect()->back();

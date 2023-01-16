@@ -14,7 +14,6 @@ class Course extends Model
     'description',
     'sold',
     'image',
-    'video',
     'admin_id',
     'admin_name',
     'discount',
@@ -28,5 +27,9 @@ class Course extends Model
     'opening_date',
     'application',
     'password',
+    'link'
   ];
+  public function courseVideo(){
+    return $this->hasMany('App\Models\VideoCourse', 'course_id', 'id');
+  }
 }

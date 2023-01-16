@@ -52,7 +52,7 @@
                       {{ $news['title'] }}
                     </td>
 
-                    <td> <img src="{{$news['image']}}" width="100px" height="100px"></td>
+                    <td> <img data-original="{{$news['image']}}" width="100px" height="100px"></td>
 
                     <td>{{ date('d/m/Y',strtotime($news['created_at'])) }}</td>
                     <td style="font-size: 30px">

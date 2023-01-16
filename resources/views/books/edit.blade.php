@@ -52,7 +52,7 @@
                                 <input id="thumbnail2" class="form-control" type="text" value="{{$book['image']}}" name="image" readonly required>
                             </div>
                             <div id="holder2">
-                                <input type="image" src="{{$book['image']}}" width="100px" height="100px">
+                                <img data-original="{{$book['image']}}" width="100px" height="100px">
 
                             </div>
                             <hr>

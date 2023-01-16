@@ -34,11 +34,23 @@
                                 <input id="thumbnail2" value="{{$event['image']}}" class="form-control" type="text" name="image" readonly required>
                             </div>
                             <div id="holder2">
-                                <input type="image" src="{{$event['image']}}" width="100px" height="100px">
+                                <img data-original="{{$event['image']}}" width="100px" height="100px">
                             </div>
                             <hr>
-                            <label>Ngày Diễn Ra</label>
-                            <input type="datetime-local" name="date" value="{{$event['date']}}" required class="form-control">
+                            <label>Mô Tả</label>
+              <textarea id="editor" name="description">{!!$event['description']!!}</textarea>
+              <hr>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Ngày Diễn Ra</label>
+                                    <input type="datetime-local" name="date" value="{{$event['date']}}" required class="form-control">
+                                </div>
+                                <div class="col-6">
+                                    <label>Link Tham Dự</label>
+                                    <input type="text" name="link" value="{{$event['link']}}" required class="form-control">
+                                </div>
+                            </div>
+
                             <hr>
                             <button type="submit" class="btn btn-gradient-primary">Cập Nhật</button>
                         </div>

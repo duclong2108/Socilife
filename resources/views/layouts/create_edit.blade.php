@@ -25,11 +25,9 @@
     <!--multi select-->
     <link href="assets/plugins/jquery-multi-select/multi-select.css" rel="stylesheet" type="text/css">
     <!--Bootstrap Datepicker-->
-    <link href="assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet"
-        type="text/css">
+    <link href="assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
     <!--Touchspin-->
-    <link href="assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.css" rel="stylesheet"
-        type="text/css">
+    <link href="assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.css" rel="stylesheet" type="text/css">
     <!-- Dropzone css -->
     <link href="assets/plugins/dropzone/css/dropzone.css" rel="stylesheet" type="text/css">
     <!-- simplebar CSS-->
@@ -44,16 +42,13 @@
     <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
     <!-- Custom Style-->
     <link href="assets/css/app-style.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/css/star-rating.min.css" media="all"
-    rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
 
-<!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme CSS files as mentioned below (and change the theme property of the plugin) -->
-<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.css"
-    media="all" rel="stylesheet" type="text/css" />
-
+    <!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme CSS files as mentioned below (and change the theme property of the plugin) -->
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="bg-theme bg-theme11">
+<body class="bg-theme bg-theme2">
 
     <!-- Start wrapper-->
     <div id="wrapper">
@@ -82,18 +77,17 @@
     <!--End wrapper-->
 
     <!-- Bootstrap core JavaScript-->
-    <script src="//cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/star-rating.min.js"
-    type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/star-rating.min.js" type="text/javascript"></script>
     <script src="main.js"></script>
-<!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme JS files as mentioned below (and change the theme property of the plugin) -->
-<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.js"></script>
+    <!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme JS files as mentioned below (and change the theme property of the plugin) -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.js"></script>
 
-<!-- optionally if you need translation for your language then include locale file as mentioned below (replace LANG.js with your own locale file) -->
-<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/locales/LANG.js"></script>
+    <!-- optionally if you need translation for your language then include locale file as mentioned below (replace LANG.js with your own locale file) -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/locales/LANG.js"></script>
     <!-- simplebar js -->
     <script src="assets/plugins/simplebar/js/simplebar.js"></script>
     <!-- Metismenu js -->
@@ -108,12 +102,12 @@
     <!-- Dropzone JS  -->
     <script src="assets/plugins/dropzone/js/dropzone.js"></script>
     <script src="assets/plugins/summernote/dist/summernote-bs4.min.js"></script>
-    <!-- <script>
+    <script>
         $('#summernoteEditor').summernote({
             height: 200,
             tabsize: 2
         });
-    </script> -->
+    </script>
     <!--Select Plugins Js-->
     <script src="assets/plugins/select2/js/select2.min.js"></script>
     <!--Inputtags Js-->
@@ -135,17 +129,16 @@
         });
 
         $('#dateragne-picker .input-daterange').datepicker({});
-
     </script>
-
+    <script src="//cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
     <!--Multi Select Js-->
     <script src="assets/plugins/jquery-multi-select/jquery.multi-select.js"></script>
     <script src="assets/plugins/jquery-multi-select/jquery.quicksearch.js"></script>
     <script>
         $(document).ready(function() {
-            
+
             $('.single-select').select2({
-                tags:true
+                tags: true
             });
 
             $('.multiple-select').select2();
@@ -201,17 +194,17 @@
                 selectableFooter: "<div class='custom-header'>Selectable footer</div>",
                 selectionFooter: "<div class='custom-header'>Selection footer</div>"
             });
-            
+
 
         });
         var options = {
-                filebrowserImageBrowseUrl: 'admin/laravel-filemanager?type=Images',
-                filebrowserImageUploadUrl: 'admin/laravel-filemanager/upload?type=Images&_token=',
-                filebrowserBrowseUrl: 'admin/laravel-filemanager?type=Files',
-                filebrowserUploadUrl: 'admin/laravel-filemanager/upload?type=Files&_token='
-            };
+            filebrowserImageBrowseUrl: 'admin/laravel-filemanager?type=undefined',
+            filebrowserImageUploadUrl: 'admin/laravel-filemanager?type=undefined',
+            filebrowserBrowseUrl: 'admin/laravel-filemanager?type=undefined',
+            filebrowserUploadUrl: 'admin/laravel-filemanager?type=undefined'
+        };
 
-        CKEDITOR.replace( 'editor', options );
+        CKEDITOR.replace('editor', options);
     </script>
     <script>
         var lfm = function(id, type, options) {
@@ -294,7 +287,13 @@
         });
     </script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- Mirrored from codervent.com/dashtremev3/form-advanced.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2020 09:41:30 GMT -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js" integrity="sha512-jNDtFf7qgU0eH/+Z42FG4fw3w7DM/9zbgNPe3wfJlCylVDTT3IgKW5r92Vy9IHa6U50vyMz5gRByIu4YIXFtaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function() {
+            $('img').lazyload();
+        })
+    </script>
+    @stack('scripts')
+    <!-- Mirrored from codervent.com/dashtremev3/form-advanced.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2020 09:41:30 GMT -->
+</body>
 </html>

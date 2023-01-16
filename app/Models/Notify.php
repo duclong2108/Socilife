@@ -13,4 +13,7 @@ class Notify extends Model
         'title',
         'description',
     ];
+    public function notify_user(){
+        return $this->hasMany('App\Models\NotifyUser', 'notify_id', 'id');
+    }
 }

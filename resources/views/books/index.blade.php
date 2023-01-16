@@ -82,6 +82,7 @@ use App\Models\BookChapter;
                     <th>Ảnh</th>
                     <th>Tiêu đề</th>
                     <th>Số lượng bán</th>
+                    <th>Loại sách</th>
                     <td style="display: none;">Mô tả</td>
                     <td style="display: none;">Tên người đăng</td>
                     <td style="display: none;">Giảm giá</td>
@@ -102,6 +103,10 @@ use App\Models\BookChapter;
                       {{ $book['title'] }}
                     </td>
                     <td>{{ $book['sold'] }} đã bán</td>
+                    <td>@if($book['type']==1) PDF
+                      @else Giấy
+                      @endif
+                    </td>
                     <td style="display: none;">{!!$book['description']!!}</td>
                     <td style="display: none;">{{$book['admin_name']}}</td>
                     <td style="display: none;">{{$book['discount']}}</td>
@@ -111,8 +116,10 @@ use App\Models\BookChapter;
                     <td style="display: none;">{{$book['coin_reduce']}}</td>
                     <td style="font-size: 30px">
                       <center>
+                        @if($book['type']==1)
                       <a href="{{ url('admin/chapters/book/' . $book['id']) }}" style="color:aqua"
                           title="Xem các chương sách"><i class="fa fa-eye"></i></a>&nbsp;&nbsp;&nbsp;
+                          @endif
                         <a href="{{ url('admin/edit/book/' . $book['id']) }}" style="color:greenyellow"
                           title="Chỉnh sửa sách"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
                         <a href="javascript:void(0)" style="color: red" class="confirmdelete" record="book" recordid="{{$book['id']}}"

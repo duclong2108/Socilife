@@ -50,7 +50,7 @@
                                 <input id="thumbnail2" class="form-control" type="text" value="{{$question['image']}}" name="image" readonly required>
                             </div>
                             <div id="holder2">
-                                <input type="image" src="{{$question['image']}}" width="100px" height="100px">
+                                <img data-original="{{$question['image']}}" width="100px" height="100px">
                             </div>
                             <hr>
                             <div class="change-type-question">
